@@ -1,0 +1,6 @@
+asset 'angular'
+asset 'lodash'
+asset 'angular-lodash'
+asset 'angular-ui-router'
+asset 'spin'
+asset 'spin.js'

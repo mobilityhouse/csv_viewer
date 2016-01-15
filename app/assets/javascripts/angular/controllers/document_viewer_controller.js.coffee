@@ -1,0 +1,1 @@
+@csvv.controller 'DocumentViewerController', [()->]

@@ -10,7 +10,21 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+
+//= require lodash/dist/lodash.compat
+//= require angular/angular
+//= require angular-lodash/angular-lodash
+//= require angular-ui-router/release/angular-ui-router
+//= require rails-template-cache/rails-template-cache
+
+//= require ./angular/csv_viewer
+//= require_tree ./angular/services
+//= require_tree ./angular/controllers
+//= require_tree ./angular/routes
+//= require_tree ./angular/templates
+
+// WARNING! CABLE TEMPORARY DISABLED

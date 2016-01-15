@@ -12,8 +12,18 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'puma'
 
+gem 'figaro', '~> 1.0.0'
+gem 'pg'
+gem 'slim-rails'
+gem 'bower-rails'
+gem 'rails-template-cache'
+gem 'grape'
+gem "hashie-forbidden_attributes"
+gem 'grape-swagger'
+
 group :development, :test do
   gem 'pry'
+  gem 'better_errors'
 end
 
 group :development do
