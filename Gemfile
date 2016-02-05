@@ -20,6 +20,10 @@ gem 'rails-template-cache'
 gem 'grape'
 gem "hashie-forbidden_attributes"
 gem 'grape-swagger'
+gem 'grape-jbuilder'
+gem "twitter-bootstrap-rails"
+gem 'select2-rails'
+gem 'dropzonejs-rails'
 
 group :development, :test do
   gem 'pry'

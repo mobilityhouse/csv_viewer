@@ -1,0 +1,35 @@
+.well
+  form.form_horizontal
+    .form-group
+      label.control-label for="f_name" File name
+      input#f_name.form-control type="text" placeholder="File name" ng-model="dz.new_document.name"
+
+      label.control-label for="f_column_separator" Column separator
+      select#f_column_separator.form-control ng-model="dz.new_document.column_separator"
+        option value="pipe" Pipe - '|'
+        option value="tab" Tab
+        option value="space" Space
+        option value="comma" Comma - ','
+
+      label.control-label for="f_row_separator" Row separator
+      select#f_row_separator.form-control ng-model="dz.new_document.row_separator"
+        option value="linux" Linux
+        option value="windows" Windows
+
+      label.control-label for="f_string_separator" String separator
+      select#f_string_separator.form-control ng-model="dz.new_document.string_separator"
+        option value="single" Single quote - '''
+        option value="double" Double quote - '"'
+        option value="none" None
+
+      label.control-label for="f_has_header" Has header line?
+      select#f_has_header.form-control ng-model="dz.new_document.header_line"
+        option value="true" Yes
+        option value="false" No
+
+      label.control-label for="f_encoding" Encoding
+      select#f_encoding.form-control ng-model="dz.new_document.encoding"
+        option value="UTF-8" UTF-8
+        option value="ISO8859-1" ISO8859-1
+  
+.well#file_uploader_dz Drag file here

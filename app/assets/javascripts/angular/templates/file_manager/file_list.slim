@@ -1,0 +1,3 @@
+.well
+  ul.list-group
+    li.list-group-item(ng-repeat="current_file in fl.file_list" selection-model selection-model-selected-items="fl.current_file" selection-model-selected-class="'active'" selection-model-on-change="floader.load_current_file()") {{current_file.id}} {{current_file.name}}

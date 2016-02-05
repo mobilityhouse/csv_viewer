@@ -13,6 +13,7 @@
 
 //= require jquery
 //= require jquery_ujs
+//= require twitter/bootstrap
 //= require turbolinks
 
 //= require lodash/dist/lodash.compat
@@ -20,6 +21,9 @@
 //= require angular-lodash/angular-lodash
 //= require angular-ui-router/release/angular-ui-router
 //= require rails-template-cache/rails-template-cache
+//= require angular-selection-model/dist/selection-model
+//= require dropzone
+//= require select2
 
 //= require ./angular/csv_viewer
 //= require_tree ./angular/services

@@ -1,0 +1,8 @@
+.well
+  form.form_horizontal
+    .form-group
+      .row
+        select#filter_columns.form-control ng-model="column_filter" multiple="true"
+          option ng-repeat="column in floader.current_file.columns" value="{{column}}" {{ column }}
+
+.well ng-click="aaa()" Aaa
