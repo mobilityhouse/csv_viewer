@@ -3,7 +3,7 @@
   class NgDropZone
 
     constructor: (@type, @element_id, @file_list)->
-      @dropzone = new Dropzone("div##{@element_id}", { url: "/document"})
+      @dropzone = new Dropzone("div##{@element_id}", { url: "/document", createImageThumbnails: false, acceptedFiles: '.csv', previewTemplate: '<div id="preview-template" style="display: none;"></div>'})
       @new_document = {}
       
       @dropzone.on 'sending', (file, xhr, formData)=>
@@ -17,5 +17,6 @@
           encoding: @new_document.encoding
         )
         
-      @dropzone.on 'complete', (a,b,c,d)=>
+      @dropzone.on 'complete', ()=>
+        @file_list.get_file_list()
         console.log 'finish'

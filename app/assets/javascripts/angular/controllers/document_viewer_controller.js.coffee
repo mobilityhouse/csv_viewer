@@ -8,6 +8,4 @@
     
     $( "#filter_columns" ).select2({ theme: "bootstrap", width: '100%', allowClear: true, placeholder: 'All columns visible'})
     
-    $scope.aaa = ()->
-      console.log $scope.column_filter
 ]

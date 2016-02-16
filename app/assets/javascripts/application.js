@@ -22,6 +22,7 @@
 //= require angular-ui-router/release/angular-ui-router
 //= require rails-template-cache/rails-template-cache
 //= require angular-selection-model/dist/selection-model
+//= require angular-bootstrap/ui-bootstrap-tpls
 //= require dropzone
 //= require select2
 
@@ -29,6 +30,7 @@
 //= require_tree ./angular/services
 //= require_tree ./angular/controllers
 //= require_tree ./angular/routes
+//= require_tree ./angular/filters
 //= require_tree ./angular/templates
 
 // WARNING! CABLE TEMPORARY DISABLED
