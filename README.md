@@ -1,24 +1,27 @@
-## README
+# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Requirements
 
-Things you may want to cover:
+* Ruby 2.3.0
 
-* Ruby version
+* Rails 5.0
 
-* System dependencies
+* Postgres database
 
-* Configuration
+### Installation:
 
-* Database creation
+* Install Ruby 2.3.0 interpreter (for example with rbenv)
 
-* Database initialization
+* Install bundler gem
+    > gem install bundler
 
-* How to run the test suite
+* Install required Ruby libraries
+    > bundle install
 
-* Services (job queues, cache servers, search engines, etc.)
+* Set database configuration in database.yml
 
-* Deployment instructions
+* Create database
+    > rake db:create && rake db:migrate
 
-* ...
+* Install required JS libraries
+    > rake bower:install
