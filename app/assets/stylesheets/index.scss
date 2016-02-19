@@ -6,13 +6,13 @@
   overflow: auto;
 }
 
-.step-number{
+/*.step-number{
   font-size: 12vh;
 }
 
 .step-number-selected{
   font-weight: bold;
-}
+}*/
 
 .row-eq-height {
   display: -webkit-box;
@@ -37,12 +37,6 @@
   align-items: center;
 }
 
-.vcenter {
-    display: inline-block;
-    vertical-align: middle;
-    float: none;
-}
-
 .stick-to-top{
   position: absolute; 
   top: 0; 
@@ -52,4 +46,8 @@
   height: 70%;
   height: 70vh;
   overflow: auto;
+}
+
+.fixed-width{
+  width: 10vw;
 }

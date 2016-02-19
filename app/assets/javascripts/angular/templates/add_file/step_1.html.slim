@@ -3,49 +3,47 @@
   i.fa.fa-5x.fa-arrow-circle-left.center-block ui-sref="main_view"
 .col-sm-8.vertical-center
   .strech-horizontal
-    .row.stick-to-top.strech-horizontal
-      .col-sm-5
-      .col-sm-1.step-number.step-number-selected ①
-      .col-sm-1.step-number ②
     .row
       .col-sm-12
         form.form_horizontal
           .form-group
-            label.control-label for="f_name" File name
-            input#f_name.form-control type="text" placeholder="Enter file name" ng-model="file_params.name"
-
-            label.control-label for="f_column_separator" Column separator
-            select#f_column_separator.form-control ng-model="file_params.column_separator"
-              option
-              option value="pipe" Pipe - '|'
-              option value="tab" Tab
-              option value="space" Space
-              option value="comma" Comma - ','
-
-            label.control-label for="f_row_separator" Row separator
-            select#f_row_separator.form-control ng-model="file_params.row_separator"
-              option
-              option value="linux" Linux
-              option value="windows" Windows
-
-            label.control-label for="f_string_separator" String separator
-            select#f_string_separator.form-control ng-model="file_params.string_separator"
-              option
-              option value="single" Single quote - '''
-              option value="double" Double quote - '"'
-              option value="none" None
-
-            label.control-label for="f_has_header" Has header line?
-            select#f_has_header.form-control ng-model="file_params.header_line"
-              option
-              option value="true" Yes
-              option value="false" No
-
-            label.control-label for="f_encoding" Encoding
-            select#f_encoding.form-control ng-model="file_params.encoding"
-              option
-              option value="UTF-8" UTF-8
-              option value="ISO8859-1" ISO8859-1
+            .input-group
+              span.input-group-addon.fixed-width Column separator
+              select#f_column_separator.form-control ng-model="file_params.column_separator"
+                option
+                option value="pipe" Pipe - '|'
+                option value="tab" Tab
+                option value="space" Space
+                option value="comma" Comma - ','
+            br
+            .input-group
+              span.input-group-addon.fixed-width Row separator
+              select#f_row_separator.form-control ng-model="file_params.row_separator"
+                option
+                option value="linux" Linux
+                option value="windows" Windows
+            br
+            .input-group
+              span.input-group-addon.fixed-width String separator
+              select#f_string_separator.form-control ng-model="file_params.string_separator"
+                option
+                option value="single" Single quote - '''
+                option value="double" Double quote - '"'
+                option value="none" None
+            br
+            .input-group
+              span.input-group-addon.fixed-width Has header line?
+              select#f_has_header.form-control ng-model="file_params.header_line"
+                option
+                option value="true" Yes
+                option value="false" No
+            br    
+            .input-group
+              span.input-group-addon.fixed-width Encoding
+              select#f_encoding.form-control ng-model="file_params.encoding"
+                option
+                option value="UTF-8" UTF-8
+                option value="ISO8859-1" ISO8859-1
 
 .col-sm-1.vertical-center
   i.fa.fa-5x.fa-arrow-circle-right.center-block ui-sref="add_file.step_2"

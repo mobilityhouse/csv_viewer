@@ -13,5 +13,8 @@
         dropzone_element_id: 'file_uploader_dz'
         alert_element_id: 'file_uploader_dz_alert'
         file_params: $scope.file_params
+        
+    $scope.$on '$stateChangeStart', (event, toState, toParams, fromState, fromParams, options)->
+      cookies.save($scope, 'file_params')
     
 ]

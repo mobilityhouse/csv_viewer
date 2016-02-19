@@ -1,5 +1,6 @@
 @csvv.filter 'PhraseFilter', ()->
   (table_rows, search_phrase, selected_columns, scope)->
+    console.log "Search: #{search_phrase}"
     if search_phrase?
       filtered_rows = []
       for row in table_rows

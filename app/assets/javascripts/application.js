@@ -18,6 +18,7 @@
 
 //= require i18n/translations
 //= require i18n_init 
+//= require spin.js/spin
 //= require lodash/dist/lodash.compat
 //= require angular/angular
 //= require rails-template-cache/rails-template-cache
