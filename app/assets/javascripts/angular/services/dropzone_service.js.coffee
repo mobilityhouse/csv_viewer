@@ -17,4 +17,3 @@
         )
         
       @dropzone.on 'complete', ()=>
-        console.log 'finish'
