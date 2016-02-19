@@ -1,0 +1,27 @@
+.col-sm-1
+.col-sm-1.vertical-center
+  i.fa.fa-5x.fa-arrow-circle-left.center-block ui-sref="add_file.step_1"
+.col-sm-8.vertical-center
+  .strech-horizontal
+    .row.stick-to-top.strech-horizontal
+      .col-sm-5
+      .col-sm-1.step-number ①
+      .col-sm-1.step-number.step-number-selected ②
+    .row
+      .col-sm-12
+        ul.list-group
+          li.list-group-item File name: {{ file_params.name }}
+          li.list-group-item Column separator: {{ file_params.column_separator }}
+          li.list-group-item Row separator: {{ file_params.row_separator }}
+          li.list-group-item String separator: {{ file_params.string_separator }}
+          li.list-group-item Header line: {{ file_params.header_line }}
+          li.list-group-item Encoding: {{ file_params.encoding }}
+    .row
+      .col-sm-12
+        .alert.alert-warning.alert-dismissible.hide role="alert"
+          button.close type="button" data-dismiss="alert"
+            span aria-hidden="true" X
+          strong Warning!
+    .row
+      .col-sm-12
+        .well#file_uploader_dz Drag file here or click to select

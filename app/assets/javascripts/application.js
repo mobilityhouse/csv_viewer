@@ -16,13 +16,16 @@
 //= require twitter/bootstrap
 //= require turbolinks
 
+//= require i18n/translations
+//= require i18n_init 
 //= require lodash/dist/lodash.compat
 //= require angular/angular
+//= require rails-template-cache/rails-template-cache
 //= require angular-lodash/angular-lodash
 //= require angular-ui-router/release/angular-ui-router
-//= require rails-template-cache/rails-template-cache
 //= require angular-selection-model/dist/selection-model
 //= require angular-bootstrap/ui-bootstrap-tpls
+//= require angular-cookies/angular-cookies
 //= require dropzone
 //= require select2
 

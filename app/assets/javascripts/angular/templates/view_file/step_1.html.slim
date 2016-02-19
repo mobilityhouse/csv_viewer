@@ -1,0 +1,17 @@
+.col-sm-1
+.col-sm-1.vertical-center
+  i.fa.fa-5x.fa-arrow-circle-left.center-block ui-sref="main_view"
+.col-sm-8.vertical-center
+  .strech-horizontal
+    .row.stick-to-top.strech-horizontal
+      .col-sm-5
+      .col-sm-1.step-number.step-number-selected ①
+      .col-sm-1.step-number ②
+    .row
+      .col-sm-12
+        .limit-height
+          ul.list-group
+            li.list-group-item(selection-model selection-model-selected-items="file_list.current_file" selection-model-selected-class="'active'" ng-repeat="current_file in file_list.files") {{current_file.id}} {{current_file.name}}
+
+.col-sm-1.vertical-center
+  i.fa.fa-5x.fa-arrow-circle-right.center-block ui-sref="view_file.step_2({file_id: file_list.current_file_id()})"

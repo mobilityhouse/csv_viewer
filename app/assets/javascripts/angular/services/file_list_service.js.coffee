@@ -5,7 +5,11 @@
     constructor: (@type)->
       @current_file = []
       @get_file_list().then (response)=>
-        @file_list = response.data
+        @files = response.data
+        
+    current_file_id: ()->
+      if @current_file.length > 0
+        return @current_file[0].id
       
     get_file_list: ()->
       $http

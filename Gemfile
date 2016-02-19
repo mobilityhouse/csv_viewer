@@ -24,6 +24,7 @@ gem 'grape-jbuilder'
 gem "twitter-bootstrap-rails"
 gem 'select2-rails'
 gem 'dropzonejs-rails'
+gem "i18n-js", '>= 3.0.0.rc11'
 
 group :development, :test do
   gem 'pry'
