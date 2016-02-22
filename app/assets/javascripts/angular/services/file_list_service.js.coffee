@@ -2,10 +2,11 @@
   
   class FileList
 
-    constructor: (@type, @spinner)->
+    constructor: (@type, @spinner, @progress_bar)->
       @current_file = []
       @get_file_list().then (response)=>
         @files = response.data
+        @progress_bar.go(50)
         @spinner.spinner_object.stop()
         
     current_file_id: ()->

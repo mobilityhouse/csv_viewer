@@ -2,13 +2,14 @@
   
   class FileLoader
 
-    constructor: (@type, @spinner)->
+    constructor: (@type, @spinner, @progress_bar)->
       @file = null
       
     load_file: (file_id)->
       if file_id?
         @get_file(file_id).then (response)=>
           @file = response.data
+          @progress_bar.go(99)
           @spinner.spinner_object.stop()
           
     get_file: (id)->
