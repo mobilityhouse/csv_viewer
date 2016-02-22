@@ -19,7 +19,7 @@
     controller: 'AddFileStep1Controller'
     
   .state 'add_file.step_2',
-    url: '/step_2/:name',
+    url: '/step_2',
     templateUrl: 'add_file/step_2.html'
     controller: 'AddFileStep2Controller'
     params: 

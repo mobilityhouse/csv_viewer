@@ -23,6 +23,7 @@ module Api
       get '/' do
         document = document_class.find(params[:id])
         {
+          name: document.name,  
           columns: document.columns,
           rows: document.rows
         }
@@ -42,12 +43,13 @@ module Api
         requires :additional_params, type: String
       end
       post '/' do
-        document_class.new(
+        doc = document_class.new(
           name: params[:name], 
           file: params[:file][:tempfile].read,
           additional_params: params[:additional_params]
-        ).save!
-        {created_file: params[:name]}
+        )
+        doc.save!
+        {created_file_name: doc.name, created_file_id: doc.id }
       end
     
     end

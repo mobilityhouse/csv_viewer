@@ -3,6 +3,7 @@
   class NgDropZone
 
     constructor: (@params)->
+      @current_file = {}
       @dropzone_el = @params.dropzone_element_id
       @spinner_el = @params.spinner_element_id
       @description_el = @params.description_element_id
@@ -25,22 +26,26 @@
       @dropzone.on 'complete', (upload_params)=>
         if upload_params.status == 'success'
           response_params = JSON.parse(upload_params.xhr.response)
-          $('#file_uploader_dz_alert').append("<div class='alert alert-success alert-dismissible' role='alert'>
+          @current_file = response_params
+          $('#file_uploader_dz_alert').append(" <div class='alert alert-success alert-dismissible' role='alert'>
                                                   <button class='close' type='button' data-dismiss='alert'>
                                                     <i class='fa fa-minus-circle'></i>
                                                   </button>
                                                   <strong>
-                                                    File #{response_params.created_file} uploaded successfully
+                                                    File #{response_params.created_file_name} uploaded successfully
                                                   </strong>
-                                               </div>")
+                                                </div>")
         if upload_params.status == 'error'
-          $('#file_uploader_dz_alert').append("<div class='alert alert-danger alert-dismissible' role='alert'>
-                                          <button class='close' type='button' data-dismiss='alert'>
-                                            <i class='fa fa-minus-circle'></i>
-                                          </button>
-                                          <strong>
-                                            Uplading of file unsuccessfull. Please check file settings and try again.
-                                          </strong>
-                                       </div>")
+          $('#file_uploader_dz_alert').append(" <div class='alert alert-danger alert-dismissible' role='alert'>
+                                                  <button class='close' type='button' data-dismiss='alert'>
+                                                    <i class='fa fa-minus-circle'></i>
+                                                  </button>
+                                                  <strong>
+                                                    Uplading of file unsuccessfull. Please check file settings and try again.
+                                                  </strong>
+                                                </div>")
         @spinner.stop()
         $("##{@description_el}").toggle()
+        
+    current_file_id: ()->
+      @current_file?.created_file_id
