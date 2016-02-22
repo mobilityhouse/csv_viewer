@@ -37,6 +37,11 @@
   align-items: center;
 }
 
+.vertical-center-no-height{
+  display: flex;
+  align-items: center;
+}
+
 .stick-to-top{
   position: absolute; 
   top: 0; 
@@ -50,4 +55,8 @@
 
 .fixed-width{
   width: 10vw;
+}
+
+.fixed-height{
+  height: 60vh;
 }

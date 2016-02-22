@@ -47,6 +47,7 @@ module Api
           file: params[:file][:tempfile].read,
           additional_params: params[:additional_params]
         ).save!
+        {created_file: params[:name]}
       end
     
     end

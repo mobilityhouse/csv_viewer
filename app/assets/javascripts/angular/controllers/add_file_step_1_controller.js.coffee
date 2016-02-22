@@ -1,11 +1,10 @@
-@csvv.controller 'AddFileStep1Controller', [ '$scope', '$rootScope', '$state', 'CookiesService', ($scope, $rootScope, $state, CookiesService)->
+@csvv.controller 'AddFileStep1Controller', [ '$scope', '$state', 'CookiesService', ($scope, $state, CookiesService)->
 
   FILE_PROPERTIES = ['column_separator', 'row_separator', 'string_separator', 'header_line', 'encoding']
 
   cookies = new CookiesService(FILE_PROPERTIES)
-
-  angular.element(document).ready ()->
-    cookies.load($scope, 'file_params')
+  
+  set_form_layout = ()->
     _.defer ()->
       $scope.$apply()
       $( "#f_column_separator" ).select2({ theme: "bootstrap", width: '100%', allowClear: false, placeholder: "Select column separator"}).
@@ -18,6 +17,10 @@
         next( ".select2-container--bootstrap" ).addClass( "input-lg" );
       $( "#f_encoding" ).select2({ theme: "bootstrap", width: '100%', allowClear: false, placeholder: "Select encoding"}).
         next( ".select2-container--bootstrap" ).addClass( "input-lg" );
+
+  angular.element(document).ready ()->
+    cookies.load($scope, 'file_params')
+    set_form_layout()
 
     $scope.$on '$stateChangeStart', (event, toState, toParams, fromState, fromParams, options)->
       cookies.save($scope, 'file_params')

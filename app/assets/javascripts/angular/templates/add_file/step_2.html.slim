@@ -1,16 +1,8 @@
 .col-sm-1
 .col-sm-1.vertical-center
-  i.fa.fa-5x.fa-arrow-circle-left.center-block ui-sref="add_file.step_1"
+  i#arrow-left.fa.fa-5x.fa-arrow-circle-left.center-block ui-sref='add_file.step_1'
 .col-sm-8.vertical-center
   .strech-horizontal
-    .row
-      .col-sm-12
-        ul.list-group
-          li.list-group-item Column separator: {{ file_params.column_separator }}
-          li.list-group-item Row separator: {{ file_params.row_separator }}
-          li.list-group-item String separator: {{ file_params.string_separator }}
-          li.list-group-item Header line: {{ file_params.header_line }}
-          li.list-group-item Encoding: {{ file_params.encoding }}
     .row
       .col-sm-12
         form.form_horizontal
@@ -20,10 +12,10 @@
               input#f_name.input-lg.form-control.strech-horizontal type="text" placeholder="Enter file name" ng-model="file_params.name"
     .row
       .col-sm-12
-        .alert.alert-warning.alert-dismissible.hide role="alert"
-          button.close type="button" data-dismiss="alert"
-            span aria-hidden="true" X
-          strong Warning!
+        #file_uploader_dz_alert
     .row
-      .col-sm-12.vstrech
-        .well#file_uploader_dz Drag file here or click to select
+      .col-sm-12
+        .fixed-height.vertical-center-no-height.well#file_uploader_dz
+          .text-center.strech-horizontal
+            i.fa.fa-5x.fa-arrow-circle-down.center-block
+            p Drag file here or click to select
