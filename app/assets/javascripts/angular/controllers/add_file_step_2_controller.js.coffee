@@ -22,6 +22,7 @@
   angular.element(document).ready ()->
     cookies.load($scope, 'file_params')
     set_dropzone()
+    $.fn.progress_bar.go(99)
         
     $scope.$on '$stateChangeStart', (event, toState, toParams, fromState, fromParams, options)->
       cookies.save($scope, 'file_params')
