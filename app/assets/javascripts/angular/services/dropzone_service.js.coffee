@@ -3,9 +3,15 @@
   class NgDropZone
 
     constructor: (@params)->
-      @dropzone = new Dropzone("div##{@params.dropzone_element_id}", { url: "/document", createImageThumbnails: false, acceptedFiles: '.csv', previewTemplate: '<div id="preview-template" style="display: none;"></div>'})
+      @dropzone_el = @params.dropzone_element_id
+      @spinner_el = @params.spinner_element_id
+      @description_el = @params.description_element_id
+      @dropzone = new Dropzone("div##{@dropzone_el}", { url: "/document", createImageThumbnails: false, acceptedFiles: '.csv', previewTemplate: '<div id="preview-template" style="display: none;"></div>'})
+      @spinner = new Spinner(@params.spinner_params)
       
       @dropzone.on 'sending', (file, xhr, formData)=>
+        $("##{@description_el}").toggle()
+        @spinner.spin(document.getElementById(@spinner_el))
         formData.append 'type', @params.type
         formData.append 'name', @params.file_params.name || file.name
         formData.append 'additional_params', JSON.stringify(
@@ -36,3 +42,5 @@
                                             Uplading of file unsuccessfull. Please check file settings and try again.
                                           </strong>
                                        </div>")
+        @spinner.stop()
+        $("##{@description_el}").toggle()
