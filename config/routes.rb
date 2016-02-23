@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # mount ActionCable.server => '/cable'
 
   mount Api::Document => '/'
+  mount Api::DocumentSettings => '/'
   
   root to: 'index#show'
   

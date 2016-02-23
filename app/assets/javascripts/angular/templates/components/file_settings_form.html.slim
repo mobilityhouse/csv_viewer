@@ -1,0 +1,39 @@
+form.form_horizontal
+  .form-group
+    .input-group
+      span.input-group-addon.fixed-width Column separator
+      select#f_column_separator.form-control ng-model="$ctrl.settings.column_separator"
+        option
+        option value="pipe" Pipe - '|'
+        option value="tab" Tab
+        option value="space" Space
+        option value="comma" Comma - ','
+    br
+    .input-group
+      span.input-group-addon.fixed-width Row separator
+      select#f_row_separator.form-control ng-model="$ctrl.settings.row_separator"
+        option
+        option value="linux" Linux
+        option value="windows" Windows
+    br
+    .input-group
+      span.input-group-addon.fixed-width String separator
+      select#f_string_separator.form-control ng-model="$ctrl.settings.string_separator"
+        option
+        option value="single" Single quote - '''
+        option value="double" Double quote - '"'
+        option value="none" None
+    br
+    .input-group
+      span.input-group-addon.fixed-width Has header line?
+      select#f_has_header.form-control ng-model="$ctrl.settings.header_line"
+        option
+        option value="true" Yes
+        option value="false" No
+    br    
+    .input-group
+      span.input-group-addon.fixed-width Encoding
+      select#f_encoding.form-control ng-model="$ctrl.settings.encoding"
+        option
+        option value="UTF-8" UTF-8
+        option value="ISO8859-1" ISO8859-1

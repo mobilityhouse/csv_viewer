@@ -1,6 +1,6 @@
 @csvv.factory 'FileDeleteService', ['$http', ($http)->
   
-  class FileList
+  class FileDeleteService
 
     constructor: (@type, @file_id)->
       

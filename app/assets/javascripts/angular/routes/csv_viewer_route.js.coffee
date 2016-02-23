@@ -40,4 +40,15 @@
     controller: 'ViewFileStep2Controller'
     params:
       file_id: null
+      
+  .state 'edit_file',
+    url: '/edit_file',
+    templateUrl: 'edit_file.html'
+    
+  .state 'edit_file.step_1',
+    url: '/step_1/:file_id',
+    templateUrl: 'edit_file/step_1.html'
+    controller: 'EditFileStep1Controller'
+    params:
+      file_id: null
     
