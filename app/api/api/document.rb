@@ -49,7 +49,15 @@ module Api
           additional_params: params[:additional_params]
         )
         doc.save!
-        {created_file_name: doc.name, created_file_id: doc.id }
+        { created_file_name: doc.name, created_file_id: doc.id }
+      end
+      
+      params do
+        requires :type, values: DOCUMENT_TYPES
+        requires :file_id
+      end
+      delete '/' do
+        document_class.find(params[:file_id]).destroy
       end
     
     end

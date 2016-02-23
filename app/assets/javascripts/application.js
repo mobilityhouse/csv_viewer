@@ -20,6 +20,7 @@
 //= require i18n_init 
 //= require spin.js/spin
 //= require nanobar/nanobar
+//= require bootbox/bootbox
 //= require lodash/dist/lodash.compat
 //= require angular/angular
 //= require rails-template-cache/rails-template-cache

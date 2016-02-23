@@ -15,11 +15,14 @@
       .col-sm-12
         .limit-height
           ul.list-group.link-cursor
-            li.list-group-item(selection-model selection-model-selected-items="file_list.current_file" selection-model-selected-class="'active'" ng-repeat="current_file in file_list.files | FileListFilter:search_file_name") 
-              = '{{current_file.id}} {{current_file.name}}'
+            li.list-group-item(selection-model selection-model-selected-items="file_list.current_file" selection-model-selected-class="'active'" ng-repeat="current_file in file_list.files | FileListFilter:search_file_name")
+              .row.strech-horizontal.vertical-center-no-height
+                .col-sm-11
+                  span
+                    strong = '{{current_file.id}} {{current_file.name}}'
+                .col-sm-1.pull-right
+                  button.btn.btn-default.without-border ng-click="delete_file(current_file.id)"
+                    i.fa.fa-2x.fa-times-circle
 
 .col-sm-1.vertical-center
-  .row
-    i.fa.fa-5x.fa-arrow-circle-right.center-block.link-cursor ui-sref="view_file.step_2({file_id: file_list.current_file_id()})"
-    br
-    i.fa.fa-5x.fa-times-circle.center-block.link-cursor
+  i.fa.fa-5x.fa-arrow-circle-right.center-block.link-cursor ui-sref="view_file.step_2({file_id: file_list.current_file_id()})"
