@@ -8,12 +8,14 @@
         h2 = 'File: {{file_loader.file.name}}'
         form.form_horizontal
           .form-group
-            label.control-label for="filter_columns" Select visible columns
-            select#filter_columns.form-control ng-model="column_filter" multiple="true"
-              option ng-repeat="column in file_loader.file.columns" value="{{column}}" {{ column }}
-
-            label.control-label for="search_phrase" Search phrase
-            input#search_phrase.form-control type="text" placeholder="Search phrase" ng-model="search_phrase"
+            .input-group
+              span.input-group-addon Select visible columns
+              select#filter_columns.form-control ng-model="column_filter" multiple="true"
+                option ng-repeat="column in file_loader.file.columns" value="{{column}}" {{ column }}
+            br
+            .input-group
+              span.input-group-addon Search phrase
+              input#search_phrase.form-control type="text" placeholder="Search phrase" ng-model="search_phrase"
         .table-container
           table.table.table-bordered.table-striped
             thead
