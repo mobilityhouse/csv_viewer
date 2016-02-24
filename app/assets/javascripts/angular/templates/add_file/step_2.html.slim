@@ -10,16 +10,7 @@
             .input-group
               span.input-group-addon File name
               input#f_name.input-lg.form-control.strech-horizontal type="text" placeholder="Enter file name" ng-model="file_params.name"
-    .row
-      .col-sm-12
-        #file_uploader_dz_alert
-    .row
-      .col-sm-12
-        #dz_container.fixed-height.vertical-center-no-height.well
-          #file_uploader_dz.transparent-cloak
-          #uploader-text.text-center.strech-horizontal
-            i.fa.fa-5x.fa-arrow-circle-down.center-block
-            p Drag file here or click to select
+    ngdropzone dz_name='{{FILE_UPLOADER_ID}}' dz_options='{{DROPZONE_OPTIONS}}' fa-icon='fa-arrow-circle-down' text='Drag file here or click to select' file_params="file_params" on-start='spinner_start' on-end='spinner_stop' current-file-id='current_file_id'
 .col-sm-1.vertical-center
   i#arrow-right.fa.fa-5x.fa-arrow-circle-right.center-block.link-cursor ng-click="go_to_file_view()"
 

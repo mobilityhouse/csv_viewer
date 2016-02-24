@@ -39,6 +39,7 @@
 //= require_tree ./angular/filters
 //= require_tree ./angular/templates
 //= require_tree ./angular/components
+//= require_tree ./angular/directives
 
 //= require ./csv_viewer
 
