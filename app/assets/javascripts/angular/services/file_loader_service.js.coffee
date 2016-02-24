@@ -2,23 +2,24 @@
   
   class FileLoader
 
-    constructor: (@type, @spinner, @progress_bar)->
+    constructor: (@type)->
       @file = null
       
-    load_file: (file_id)->
+    load_file: (file_id, callback_success, callback_fail)->
       if file_id?
         @get_file(file_id).then (response)=>
           @file = response.data
-          @progress_bar.go(99)
-          @spinner.spinner_object.stop()
+          if callback_success?
+            callback_success()
         , (err)=>
-          bootbox.alert "Removing of file failed - #{err.status} #{err.statusText}. Check file settings or upload it again"
-          @progress_bar.go(99)
-          @spinner.spinner_object.stop()
+          if callback_fail?
+            callback_fail(err)
+      else
+        if callback_fail?
+          callback_fail({status: 404, statusText: 'No file selected'})
           
           
     get_file: (id)->
-      @spinner.spinner_object.spin(@spinner.spinner_target)
       $http
         url: "/document/", 
         method: "GET", 

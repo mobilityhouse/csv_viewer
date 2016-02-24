@@ -2,11 +2,23 @@
 
   SPINNER_OPTIONS = 
     scale: 2
+    
+  spinner = new Spinner(SPINNER_OPTIONS)
+
+  show_update_success_message = ()->
+    spinner.stop()
+    bootbox.alert "Update of file settings successfull."
+    
+  show_update_fail_message = (err)->
+    spinner.stop()
+    bootbox.alert "Update of file failed - #{err.status} #{err.statusText}."
 
   $scope.save = ()->
-    $scope.file_settings.set()
+    spinner.spin( document.getElementById('a-lv2') )
+    $scope.file_settings.set(show_update_success_message, show_update_fail_message)
+    
 
-  set_form_layout = ()->
+  set_layout = ()->
     _.defer ()->
       $scope.$apply()
       $( "#f_column_separator" ).select2({ theme: "bootstrap", width: '100%', allowClear: false, placeholder: "Select column separator"}).
@@ -19,9 +31,16 @@
         next( ".select2-container--bootstrap" ).addClass( "input-lg" );
       $( "#f_encoding" ).select2({ theme: "bootstrap", width: '100%', allowClear: false, placeholder: "Select encoding"}).
         next( ".select2-container--bootstrap" ).addClass( "input-lg" );
+      spinner.stop()
+      $( '#state-content' ).toggle()
+      
+  show_error_message = (err)->
+    spinner.stop()
+    bootbox.alert "Get file settings failed - #{err.status} #{err.statusText}."
 
   angular.element(document).ready ()->
-    $scope.file_settings = new FileSettingsService('CsvDocument', $state.params.file_id,  { spinner_object: new Spinner(SPINNER_OPTIONS), spinner_target: document.getElementById('a-lv2') })
-    $scope.file_settings.get(set_form_layout)
+    spinner.spin( document.getElementById('a-lv2') )
+    $scope.file_settings = new FileSettingsService('CsvDocument', $state.params.file_id)
+    $scope.file_settings.get(set_layout, show_error_message)
     
 ]

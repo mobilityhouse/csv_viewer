@@ -2,6 +2,8 @@
 
   SPINNER_OPTIONS = 
     scale: 2
+    
+  spinner = new Spinner(SPINNER_OPTIONS)
 
   $scope.delete_file = (file_id)->
     bootbox.confirm "Selected file will be deleted. Are you sure?", (result)->
@@ -14,8 +16,20 @@
     
   $scope.edit_file = (file_id)->
     $state.go 'edit_file.step_1', {file_id: file_id}
+    
+  set_layout = ()->
+    $.fn.progress_bar.go(50)
+    spinner.stop()
+    $('#state-content').toggle()
+  
+  show_error_message = (err)->
+    $.fn.progress_bar.go(50)
+    spinner.stop()
+    bootbox.alert "Get file list failed - #{err.status} #{err.statusText}"
 
   angular.element(document).ready ()->
-    $scope.file_list = new FileListService('CsvDocument', { spinner_object: new Spinner(SPINNER_OPTIONS), spinner_target: document.getElementById('main_container') }, $.fn.progress_bar)
-
+    spinner.spin( document.getElementById('a-l2') )
+    $scope.file_list = new FileListService('CsvDocument')
+    $scope.file_list.refresh(set_layout, show_error_message)
+    
 ]

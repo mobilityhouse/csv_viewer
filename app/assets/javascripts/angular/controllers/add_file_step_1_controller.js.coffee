@@ -17,6 +17,7 @@
         next( ".select2-container--bootstrap" ).addClass( "input-lg" );
       $( "#f_encoding" ).select2({ theme: "bootstrap", width: '100%', allowClear: false, placeholder: "Select encoding"}).
         next( ".select2-container--bootstrap" ).addClass( "input-lg" );
+      $( '#state-content' ).toggle()
       $.fn.progress_bar.go(33)
 
   angular.element(document).ready ()->

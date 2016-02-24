@@ -2,11 +2,10 @@
   
   class FileSettings
 
-    constructor: (@type, @file_id, @spinner)->
+    constructor: (@type, @file_id)->
       @current_file_settings = {}
       
-    get: (callback_function)->
-      @spinner.spinner_object.spin(@spinner.spinner_target)
+    get: (callback_success, callback_fail)->
       $http
         url: "/document_settings", 
         method: "GET", 
@@ -16,17 +15,13 @@
           file_id: @file_id
       .then (res)=>
         @current_file_settings = res.data
-        if callback_function?
-          callback_function()
-        @spinner.spinner_object.stop()
+        if callback_success?
+          callback_success()
       , (err)=>
-        if callback_function?
-          callback_function()
-        @spinner.spinner_object.stop()
-        bootbox.alert "Get file settings failed - #{err.status} #{err.statusText}."
+        if callback_fail?
+          callback_fail(err)
           
-    set: ()->
-      @spinner.spinner_object.spin(@spinner.spinner_target)
+    set: (callback_success, callback_fail)->
       $http
         url: "/document_settings", 
         method: "POST", 
@@ -36,10 +31,10 @@
           file_id: @file_id
           new_settings: @current_file_settings
       .then (res)=>
-        @spinner.spinner_object.stop()
-        bootbox.alert "Update of file settings successfull."
+        if callback_success?
+          callback_success()
       , (err)=>
-        @spinner.spinner_object.stop()
-        bootbox.alert "Update of file failed - #{err.status} #{err.statusText}."
+        if callback_fail?
+          callback_fail(err)
           
 ]
