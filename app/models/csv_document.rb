@@ -21,7 +21,7 @@ class CsvDocument < Document
     end
   end
 
-  #private
+  private
   
   def generic_columns
     [].tap do |columns|
@@ -45,6 +45,7 @@ class CsvDocument < Document
       when 'tab'   then "\t"
       when 'space' then ' '
       when 'comma' then ','
+      when 'semicolon' then ';'
     end
   end
   
