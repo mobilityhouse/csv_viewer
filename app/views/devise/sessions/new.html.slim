@@ -1,0 +1,25 @@
+.vertical-center
+  .container-fluid
+    .row
+      .col-sm-12.text-center
+        h2 Log in
+    .row
+      .col-sm-12
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .form-group
+            .input-group
+              span.input-group-addon.fixed-width E-mail
+              = f.email_field :email, autofocus: true, class: 'input-lg form-control strech-horizontal'
+            br
+            .input-group
+              span.input-group-addon.fixed-width Password
+              = f.password_field :password, class: 'input-lg form-control strech-horizontal'
+            br
+            .input-group
+              span.input-group-addon.fixed-width
+                = f.label :remember_me
+              span.input-group-addon
+                = f.check_box :remember_me
+            br
+            .text-center
+              = f.submit 'Log in', class: 'btn btn-default btn-lg'

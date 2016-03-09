@@ -18,13 +18,14 @@ gem 'slim-rails'
 gem 'bower-rails'
 gem 'rails-template-cache'
 gem 'grape'
-gem "hashie-forbidden_attributes"
+gem 'hashie-forbidden_attributes'
 gem 'grape-swagger'
 gem 'grape-jbuilder'
 gem "twitter-bootstrap-rails"
 gem 'select2-rails'
 gem 'dropzonejs-rails'
-gem "i18n-js", '>= 3.0.0.rc11'
+gem 'i18n-js', '>= 3.0.0.rc11'
+gem 'devise', :github => 'plataformatec/devise', :branch => 'master'
 
 group :development, :test do
   gem 'pry'
