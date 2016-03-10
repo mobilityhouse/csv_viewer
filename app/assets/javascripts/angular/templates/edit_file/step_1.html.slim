@@ -1,12 +1,10 @@
+.navigation
+  button.btn.btn-default ui-sref="root.view_file.step_1"
+    i#arrow-left.fa.fa-2x.fa-arrow-circle-left.link-cursor.back-btn
+  h3 File settings
 .col-sm-1
-.col-sm-1.vertical-center
-  i.fa.fa-5x.fa-arrow-circle-left.center-block.link-cursor ui-sref="view_file.step_1"
-#state-content.col-sm-8.vertical-center style='display: none;'
+#state-content.col-sm-10.vertical-center style='display: none;'
   .strech-horizontal
-    .row
-      .col-sm-12.text-center
-        h3 Your file settings
-        br
     .row
       .col-sm-12
         file-settings-form settings='file_settings.current_file_settings'

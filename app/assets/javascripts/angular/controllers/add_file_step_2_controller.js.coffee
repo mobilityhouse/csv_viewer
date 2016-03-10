@@ -22,10 +22,14 @@
   $scope.spinner_stop = ()->
     spinner.stop()
     
-  $scope.current_file_id = 0
-  
   $scope.go_to_file_view = ()->
-    $state.go 'view_file.step_2', {file_id: $scope.current_file_id}
+    console.log $scope.current_file_id
+    console.log $scope.current_file_id?
+    if $scope.current_file_id?
+      $state.go 'root.view_file.step_2', {file_id: $scope.current_file_id}
+    else
+      bootbox.alert "Please upload file first"
+      return true
   
   angular.element(document).ready ()->
     cookies.load($scope, 'file_params')

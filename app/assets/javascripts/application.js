@@ -29,6 +29,7 @@
 //= require angular-selection-model/dist/selection-model
 //= require angular-bootstrap/ui-bootstrap-tpls
 //= require angular-cookies/angular-cookies
+//= require angular-devise/lib/devise
 //= require dropzone
 //= require select2
 

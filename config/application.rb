@@ -9,5 +9,8 @@ Bundler.require(*Rails.groups)
 module CsvViewer
   class Application < Rails::Application
     config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
+    config.to_prepare do
+      DeviseController.respond_to :html, :json
+    end
   end
 end

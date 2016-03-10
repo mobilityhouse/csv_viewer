@@ -8,15 +8,10 @@ html ng-app='csvv' lang=I18n.locale
     = javascript_include_tag 'application', 'data-turbolinks-track' => true 
 
   body
-    - if user_signed_in?
-      .logo.link-cursor ui-sref="main_view"
-        = image_tag("codetain_logo.png")
-      .session-buttons
-        = link_to(destroy_user_session_path, method: 'delete', class: 'btn btn-default') do
-          i.fa.fa-sign-out Log out
-      #a-lv1(ui-view)
-      footer.footer
-        .container
-          p.text-muted © codetain.eu
-    - else
-      = yield
+    .logo.link-cursor ui-sref="main_view"
+      = image_tag("codetain_logo.png")
+
+    #a-lv1(ui-view)
+    footer.footer
+      .container
+        p.text-muted © codetain.eu

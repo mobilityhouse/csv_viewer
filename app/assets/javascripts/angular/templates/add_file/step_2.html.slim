@@ -1,7 +1,12 @@
+.navigation
+  button.btn.btn-default ui-sref='root.add_file.step_1'
+    i#arrow-left.fa.fa-2x.fa-arrow-circle-left.link-cursor.back-btn
+  h3 Add file
+  button.btn.btn-default ng-click="go_to_file_view()"
+    i#arrow-right.next-btn.fa.fa-2x.fa-arrow-circle-right.link-cursor
+
 .col-sm-1
-.col-sm-1.vertical-center
-  i#arrow-left.fa.fa-5x.fa-arrow-circle-left.center-block.link-cursor ui-sref='add_file.step_1'
-.col-sm-8.vertical-center
+.col-sm-10.vertical-center
   .strech-horizontal
     .row
       .col-sm-12
@@ -11,6 +16,4 @@
               span.input-group-addon File name
               input#f_name.input-lg.form-control.strech-horizontal type="text" placeholder="Enter file name" ng-model="file_params.name"
     ngdropzone dz_name='{{FILE_UPLOADER_ID}}' dz_options='{{DROPZONE_OPTIONS}}' fa-icon='fa-arrow-circle-down' text='Drag file here or click to select' file_params="file_params" on-start='spinner_start' on-end='spinner_stop' current-file-id='current_file_id'
-.col-sm-1.vertical-center
-  i#arrow-right.fa.fa-5x.fa-arrow-circle-right.center-block.link-cursor ng-click="go_to_file_view()"
 

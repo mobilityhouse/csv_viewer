@@ -1,7 +1,12 @@
+.navigation
+  button.btn.btn-default ui-sref="root.main_view"
+    i#arrow-left.fa.fa-2x.fa-arrow-circle-left.link-cursor.back-btn
+  h3 Select file
+  button.btn.btn-default ng-click="go_to_file()"
+    i#arrow-right.next-btn.fa.fa-2x.fa-arrow-circle-right.link-cursor
+
 .col-sm-1
-.col-sm-1.vertical-center
-  i.fa.fa-5x.fa-arrow-circle-left.center-block.link-cursor ui-sref="main_view"
-.col-sm-8.vertical-center 
+.col-sm-10.vertical-center 
   #state-content.strech-horizontal style='display: none;'
     .row 
       form.form_horizontal
@@ -9,8 +14,6 @@
           .input-group
             span.input-group-addon Search file
             input#file_name.input-lg.form-control.strech-horizontal type="text" placeholder="Enter file name" ng-model="search_file_name"
-    .row.stick-to-top.strech-horizontal
-      .col-sm-12.text-center.h3 Select file
     .row
       .col-sm-12
         .limit-height
@@ -26,6 +29,3 @@
                 .col-sm-1
                   button.btn.btn-default.without-border ng-click="delete_file(current_file.id)"
                     i.fa.fa-2x.fa-times-circle
-
-.col-sm-1.vertical-center
-  i.fa.fa-5x.fa-arrow-circle-right.center-block.link-cursor ui-sref="view_file.step_2({file_id: file_list.current_file_id()})"
