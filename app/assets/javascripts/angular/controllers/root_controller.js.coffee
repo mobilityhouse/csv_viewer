@@ -6,22 +6,22 @@
     console.log 'check_auth' 
 
     if !_.include( STATES_WITHOUT_AUTHORIZATION, state.name)
-      Auth.currentUser().then (res)->
-        console.log 'auth ok'
+      Auth.currentUser().then (logged_user)->
+        $scope.is_admin = logged_user.admin
       , ()->
-        console.log 'auth bad - redirect'
+        bootbox.alert "You have to be logged in to view this page"
         $state.go 'root.log_in'
-      
-  check_auth($state.current)
   
   $rootScope.$on '$stateChangeStart', (event, toState, toParams, fromState, fromParams, options)->
-    console.log 'state change'
     check_auth(toState)
 
   $scope.logout = ()->
     Auth.logout().then ()->
       $state.go 'root.log_in'
     , (err)->
-      console.log err
+      bootbox.alert "Error during logout occured"
+      return false
+      
+  check_auth($state.current)
 
 ]

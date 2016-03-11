@@ -2,18 +2,12 @@
 
   $scope.user = {}
 
-#  $scope.toggle_remember_me = (a)->
-#    if !$scope.user.remember_me
-#      $scope.user.remember_me = true
-#    else
-#      $scope.user.remember_me = false
-#    console.log a
-
   $scope.login = ()->
     Auth.login($scope.user).then ()->
       $state.go 'root.main_view'
     , (err)->
-      console.log err
+      bootbox.alert "Email / password incorrect"
+      return false
 
   angular.element(document).ready ()->
     $.fn.progress_bar.go(1)

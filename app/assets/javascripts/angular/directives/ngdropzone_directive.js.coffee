@@ -1,27 +1,36 @@
 @csvv.directive 'ngdropzone', [ '$rootScope', ($rootScope)->
 
+  alert = (message)->
+    $('#dz_alert').append(" <div class='alert alert-danger alert-dismissible' role='alert'>
+                              <button class='close' type='button' data-dismiss='alert'>
+                                <i class='fa fa-minus-circle'></i>
+                              </button>
+                              <strong>
+                                #{message}
+                              </strong>
+                            </div>")
+                            
+  info = (message)->
+    $('#dz_alert').append(" <div class='alert alert-success alert-dismissible' role='alert'>
+                              <button class='close' type='button' data-dismiss='alert'>
+                                <i class='fa fa-minus-circle'></i>
+                              </button>
+                              <strong>
+                                #{message}
+                              </strong>
+                            </div>")
+
   show_upload_status = (upload_params, stop_callback)->
     stop_callback()
     if upload_params.status == 'success'
       response_params = JSON.parse(upload_params.xhr.response)
-      $('#dz_alert').append(" <div class='alert alert-success alert-dismissible' role='alert'>
-                                <button class='close' type='button' data-dismiss='alert'>
-                                  <i class='fa fa-minus-circle'></i>
-                                </button>
-                                <strong>
-                                  File #{response_params.created_file_name} uploaded successfully
-                                </strong>
-                              </div>")
+      info("File #{response_params.created_file_name} uploaded successfully")
       return response_params.created_file_id
     if upload_params.status == 'error'
-      $('#dz_alert').append(" <div class='alert alert-danger alert-dismissible' role='alert'>
-                                <button class='close' type='button' data-dismiss='alert'>
-                                  <i class='fa fa-minus-circle'></i>
-                                </button>
-                                <strong>
-                                  Uplading of file unsuccessfull. Please check file settings and try again.
-                                </strong>
-                              </div>")
+      if upload_params.xhr.status == 401
+        alert('You are not authorized to upload files')
+      else
+        alert('Uplading of file unsuccessfull. Please check file settings and try again.')
       return 0
                               
                               

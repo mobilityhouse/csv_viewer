@@ -23,8 +23,6 @@
     spinner.stop()
     
   $scope.go_to_file_view = ()->
-    console.log $scope.current_file_id
-    console.log $scope.current_file_id?
     if $scope.current_file_id?
       $state.go 'root.view_file.step_2', {file_id: $scope.current_file_id}
     else

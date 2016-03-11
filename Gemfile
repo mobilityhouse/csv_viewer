@@ -26,7 +26,7 @@ gem 'select2-rails'
 gem 'dropzonejs-rails'
 gem 'i18n-js', '>= 3.0.0.rc11'
 gem 'devise', :github => 'plataformatec/devise', :branch => 'master'
-gem 'angular_rails_csrf'
+gem 'angular_csrf'
 
 group :development, :test do
   gem 'pry'

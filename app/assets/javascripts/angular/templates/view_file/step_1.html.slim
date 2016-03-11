@@ -23,9 +23,9 @@
                 .col-sm-10
                   span
                     strong = '{{current_file.id}} {{current_file.name}}'
-                .col-sm-1
+                .col-sm-1 ng-show="is_admin"
                   button.btn.btn-default.without-border ng-click="edit_file(current_file.id)"
                     i.fa.fa-2x.fa-pencil-square-o
-                .col-sm-1
+                .col-sm-1 ng-show="is_admin"
                   button.btn.btn-default.without-border ng-click="delete_file(current_file.id)"
                     i.fa.fa-2x.fa-times-circle
