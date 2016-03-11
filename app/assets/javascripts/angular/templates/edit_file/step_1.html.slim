@@ -3,11 +3,11 @@
     i#arrow-left.fa.fa-2x.fa-arrow-circle-left.link-cursor.back-btn
   h3 File settings
 .col-sm-1
-#state-content.col-sm-10.vertical-center style='display: none;'
+#state-content.col-sm-10.vertical-center
   .strech-horizontal
     .row
       .col-sm-12
-        file-settings-form settings='file_settings.current_file_settings'
-    .row
+        file-settings-form settings='file_settings.current_file_settings' get-form-data-promise='get_file_settings_promise'
+    #save-btn-container.row style='display: none;'
       .col-sm-12.text-center
         button.btn.btn-default.btn-lg type='button' ng-click="save()" Save

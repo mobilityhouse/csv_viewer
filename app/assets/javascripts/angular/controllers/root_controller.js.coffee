@@ -3,8 +3,6 @@
   STATES_WITHOUT_AUTHORIZATION = ['root.log_in']
 
   check_auth = (state)->
-    console.log 'check_auth' 
-
     if !_.include( STATES_WITHOUT_AUTHORIZATION, state.name)
       Auth.currentUser().then (logged_user)->
         $scope.is_admin = logged_user.admin
