@@ -1,0 +1,15 @@
+.input-group.strech-horizontal
+  span.input-group-addon.fixed-width AWS access key id
+  input#aws_access_key_id.input-lg.form-control.strech-horizontal type="text" placeholder="Enter AWS access key id" ng-model="$ctrl.esettings.aws_access_key_id"
+br
+.input-group.strech-horizontal
+  span.input-group-addon.fixed-width AWS secret access key
+  input#aws_secret_access_key.input-lg.form-control.strech-horizontal type="text" placeholder="Enter AWS secret access key" ng-model="$ctrl.esettings.aws_secret_access_key"
+br
+.input-group.strech-horizontal
+  span.input-group-addon.fixed-width AWS region
+  select#aws_region.form-control ng-model="$ctrl.esettings.aws_region"
+    option
+    option value="region_a" Region A
+    option value="region_b" Region B
+br

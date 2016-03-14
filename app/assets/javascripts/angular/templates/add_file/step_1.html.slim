@@ -4,9 +4,11 @@
   h3 File settings
   button.btn.btn-default ui-sref='root.add_file.step_2'
     i#arrow-right.next-btn.fa.fa-2x.fa-arrow-circle-right.link-cursor
+
 .col-sm-1
 .col-sm-10.vertical-center 
   .strech-horizontal
-    .row
+    .row.top-menu-margin
       .col-sm-12
         file-settings-form settings='file_params' get-form-data-promise='get_cookies_promise'
+        file-extension-form ename='file_params.extension' esettings='extension_params' get-form-data-promise='get_extension_cookies_promise'

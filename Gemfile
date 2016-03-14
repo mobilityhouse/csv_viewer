@@ -27,6 +27,7 @@ gem 'dropzonejs-rails'
 gem 'i18n-js', '>= 3.0.0.rc11'
 gem 'devise', :github => 'plataformatec/devise', :branch => 'master'
 gem 'angular_csrf'
+gem 'aws-sdk', '~> 2'
 
 group :development, :test do
   gem 'pry'

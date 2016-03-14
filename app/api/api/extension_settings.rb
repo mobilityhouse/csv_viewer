@@ -1,5 +1,5 @@
 module Api
-  class DocumentSettings < Grape::API
+  class ExtensionSettings < Grape::API
     
     DOCUMENT_TYPES = ['CsvDocument']    
     
@@ -22,28 +22,15 @@ module Api
       
     end
     
-    namespace :document_settings do
+    namespace :extension_settings do
     
       params do
         requires :type, values: DOCUMENT_TYPES
         requires :file_id, type: Integer
       end
       get '/' do
-        document_class.find(params[:file_id]).additional_params
+        document_class.find(params[:file_id]).document_extension.try(:extension_settings) || {}
       end
-      
-      params do
-        requires :type, values: DOCUMENT_TYPES
-        requires :file_id, type: Integer
-        requires :new_settings
-        requires :new_extension_settings
-      end
-      post '/' do
-        ApplicationHelper.authenticate_as_admin!(env, params, return_401)
-        doc = document_class.find(params[:file_id])
-        doc.update_params_and_extension(params[:new_settings], params[:new_extension_settings])
-      end
-      
     
     end
     

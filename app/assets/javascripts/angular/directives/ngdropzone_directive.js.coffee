@@ -34,7 +34,7 @@
       return 0
                               
                               
-  add_file_params = (file, xhr, formData, file_params, start_callback)->
+  add_file_params = (file, xhr, formData, file_params, extension_params, start_callback)->
     start_callback()
     formData.append 'type', file_params.type
     formData.append 'name', file_params.name || file.name
@@ -43,12 +43,16 @@
       row_separator: file_params.row_separator
       string_separator: file_params.string_separator
       header_line: file_params.header_line
-      encoding: file_params.encoding)
+      encoding: file_params.encoding
+      extension: file_params.extension)
+    if file_params.extension?
+      formData.append 'extension_params', JSON.stringify(extension_params)
 
   return {
     restrict: 'E'
     scope:
       fileParams: '='
+      extensionParams: '='
       currentFileId: '='
       onStart: '&'
       onEnd: '&'
@@ -62,7 +66,7 @@
       ,()->
         scope.dz = new Dropzone("##{attrs.dzName}", scope.$eval(attrs.dzOptions))
         scope.dz.on 'sending', (file, xhr, formData)->
-          add_file_params(file, xhr, formData, scope.fileParams, scope.onStart())
+          add_file_params(file, xhr, formData, scope.fileParams, scope.extensionParams, scope.onStart())
         scope.dz.on 'complete', (upload_params)->
           scope.currentFileId = show_upload_status(upload_params, scope.onEnd())
           _.defer ()->

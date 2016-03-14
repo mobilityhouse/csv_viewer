@@ -49,6 +49,7 @@ module Api
         requires :name
         requires :file
         requires :additional_params, type: String
+        optional :extension_params, type: String
       end
       post '/' do
         ApplicationHelper.authenticate_as_admin!(env, params, return_401)
@@ -58,6 +59,9 @@ module Api
           additional_params: params[:additional_params]
         )
         doc.save!
+        if doc.has_extension?
+          doc.extension_class.new({document: doc, extension_settings: params[:extension_params]}).save!
+        end
         { created_file_name: doc.name, created_file_id: doc.id }
       end
       

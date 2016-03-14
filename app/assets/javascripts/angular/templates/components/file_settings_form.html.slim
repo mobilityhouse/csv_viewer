@@ -38,3 +38,9 @@ form#file-settings-form.form_horizontal style='display: none;'
         option
         option value="UTF-8" UTF-8
         option value="ISO8859-1" ISO8859-1
+    br    
+    .input-group
+      span.input-group-addon.fixed-width Extension
+      select#f_extension.form-control ng-model="$ctrl.settings.extension"
+        option
+        option value="S3" Amazon S3

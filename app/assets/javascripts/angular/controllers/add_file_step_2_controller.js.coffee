@@ -1,6 +1,7 @@
 @csvv.controller 'AddFileStep2Controller', ['$scope', '$state', 'CookiesService', ($scope, $state, CookiesService)->
 
-  FILE_PROPERTIES = ['name', 'column_separator', 'row_separator', 'string_separator', 'header_line', 'encoding']
+  FILE_PROPERTIES = ['name', 'column_separator', 'row_separator', 'string_separator', 'header_line', 'encoding', 'extension']
+  EXTENSION_PROPERTIES = ['aws_access_key_id', 'aws_secret_access_key', 'aws_region']
   
   SPINNER_OPTIONS = 
     scale: 2
@@ -13,7 +14,8 @@
     
   $scope.FILE_UPLOADER_ID = 'file_uploader'
   
-  cookies = new CookiesService(FILE_PROPERTIES)
+  file_settings_cookies = new CookiesService(FILE_PROPERTIES)
+  extension_settings_cookies = new CookiesService(EXTENSION_PROPERTIES)
   spinner = new Spinner(SPINNER_OPTIONS)
   
   $scope.spinner_start = ()->
@@ -30,13 +32,15 @@
       return true
   
   angular.element(document).ready ()->
-    cookies.load($scope, 'file_params')
+    file_settings_cookies.load($scope, 'file_params')
+    extension_settings_cookies.load($scope, 'extension_params')
     $scope.file_params.type = 'CsvDocument'
     $.fn.progress_bar.go(66)
     _.defer ()->
       $scope.$apply()
         
     $scope.$on '$stateChangeStart', (event, toState, toParams, fromState, fromParams, options)->
-      cookies.save($scope, 'file_params')
+      file_settings_cookies.save($scope, 'file_params')
+      extension_settings_cookies.save($scope, 'extension_params')
     
 ]

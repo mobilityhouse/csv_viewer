@@ -8,12 +8,12 @@
 .col-sm-1
 .col-sm-10.vertical-center
   .strech-horizontal
-    .row.dropzone-margins
+    .row.top-menu-margin
       .col-sm-12
         form.form_horizontal
           .form-group
             .input-group
               span.input-group-addon File name
               input#f_name.input-lg.form-control.strech-horizontal type="text" placeholder="Enter file name" ng-model="file_params.name"
-    ngdropzone dz_name='{{FILE_UPLOADER_ID}}' dz_options='{{DROPZONE_OPTIONS}}' fa-icon='fa-arrow-circle-down' text='Drag file here or click to select' file_params="file_params" on-start='spinner_start' on-end='spinner_stop' current-file-id='current_file_id'
+    ngdropzone dz_name='{{FILE_UPLOADER_ID}}' dz_options='{{DROPZONE_OPTIONS}}' fa-icon='fa-arrow-circle-down' text='Drag file here or click to select' file_params="file_params" extension_params="extension_params" on-start='spinner_start' on-end='spinner_stop' current-file-id='current_file_id'
 

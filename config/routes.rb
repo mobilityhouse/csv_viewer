@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   mount Api::Document => '/'
   mount Api::DocumentSettings => '/'
+  mount Api::ExtensionSettings => '/'
   
   root to: 'index#show'
   
