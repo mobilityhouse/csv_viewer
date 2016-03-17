@@ -8,7 +8,11 @@
         else
           _.without(Object.keys(row), '$$hashKey')
         for field in fields
-          if row[field]?.includes(search_phrase)
+          if (row[field].constructor == String)
+            field_text = row[field]
+          else
+            field_text = $.parseHTML(row[field].toString())[0].innerHTML
+          if field_text.includes(search_phrase)
             filtered_rows.push(row)
             break
       scope.rows_count = filtered_rows.length
