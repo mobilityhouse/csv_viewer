@@ -30,6 +30,7 @@
 //= require angular-bootstrap/ui-bootstrap-tpls
 //= require angular-cookies/angular-cookies
 //= require angular-devise/lib/devise
+//= require angular-sanitize/angular-sanitize
 //= require dropzone
 //= require select2
 

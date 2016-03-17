@@ -15,6 +15,9 @@
     spinner.stop()
     $.fn.progress_bar.go(99)
     bootbox.alert "Get file failed - #{err.status} #{err.statusText}. Check file settings or upload it again"
+    
+  $scope.aaa = ()->
+    console.log 'get s2 file'
   
   angular.element(document).ready ()->
     spinner.spin( document.getElementById('a-l2') )

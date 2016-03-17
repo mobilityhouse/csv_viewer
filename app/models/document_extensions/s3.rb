@@ -2,6 +2,10 @@ module DocumentExtensions
 
   class S3 < DocumentExtension
     
+    def self.type
+      'S3'
+    end
+    
     def aws_access_key_id
       extension_settings['aws_access_key_id']
     end
@@ -13,7 +17,7 @@ module DocumentExtensions
     def aws_region
       extension_settings['aws_region']
     end
-
+    
   end
 
 end

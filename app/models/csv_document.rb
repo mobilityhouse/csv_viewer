@@ -4,6 +4,12 @@ class CsvDocument < Document
   
   MIME_TYPES = ['text/csv']
   ENCODINGS = ['UTF-8', 'ISO8859-1']
+  ATTRIBUTES_FOR_API = ['columns']
+  
+  def get_attribute(attribute_name)
+    return if !ATTRIBUTES_FOR_API.include?(attribute_name)
+    send attribute_name
+  end
   
   def columns
     header_line? ? csv_content.headers : generic_columns

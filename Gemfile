@@ -28,6 +28,8 @@ gem 'i18n-js', '>= 3.0.0.rc11'
 gem 'devise', :github => 'plataformatec/devise', :branch => 'master'
 gem 'angular_csrf'
 gem 'aws-sdk', '~> 2'
+#gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'
+#gem 'draper', '~> 1.3'
 
 group :development, :test do
   gem 'pry'

@@ -30,10 +30,14 @@ module Api
       end
       get '/' do
         document = document_class.find(params[:id])
+        document_extension = document.document_extension
+        
         {
           name: document.name,  
           columns: document.columns,
-          rows: document.rows
+          rows: document.rows,
+          extension_type: document_extension.class.try(:type),
+          extension_settings: document_extension.try(:extension_settings)
         }
       end
       
@@ -72,6 +76,20 @@ module Api
       delete '/' do
         ApplicationHelper.authenticate_as_admin!(env, params, return_401)
         document_class.find(params[:file_id]).destroy
+      end
+      
+      params do
+        requires :type, values: DOCUMENT_TYPES
+        requires :file_id, type: Integer
+        requires :attributes, type: Array[String]
+      end
+      get '/attribute' do
+        doc = document_class.find(params[:file_id])
+        params[:attributes].reduce({}) do |acc, attribute_name|
+          acc.tap do |a|
+            a[attribute_name] = doc.get_attribute(attribute_name)
+          end
+        end
       end
     
     end

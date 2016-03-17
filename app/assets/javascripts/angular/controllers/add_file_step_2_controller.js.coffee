@@ -2,6 +2,7 @@
 
   FILE_PROPERTIES = ['name', 'column_separator', 'row_separator', 'string_separator', 'header_line', 'encoding', 'extension']
   EXTENSION_PROPERTIES = ['aws_access_key_id', 'aws_secret_access_key', 'aws_region']
+  EXTENSIONS_WITH_POST_UPLOAD_STEP = ['S3']
   
   SPINNER_OPTIONS = 
     scale: 2
@@ -24,9 +25,12 @@
   $scope.spinner_stop = ()->
     spinner.stop()
     
-  $scope.go_to_file_view = ()->
+  $scope.go_to_next_view = ()->
     if $scope.current_file_id?
-      $state.go 'root.view_file.step_2', {file_id: $scope.current_file_id}
+      if _.include(EXTENSIONS_WITH_POST_UPLOAD_STEP, $scope.file_params.extension)
+        $state.go 'root.add_file.step_3', {file_id: $scope.current_file_id, extension: $scope.file_params.extension}
+      else
+        $state.go 'root.view_file.step_2', {file_id: $scope.current_file_id}
     else
       bootbox.alert "Please upload file first"
       return true

@@ -34,6 +34,14 @@
     controller: 'AddFileStep2Controller'
     params: 
       name: null
+      
+  .state 'root.add_file.step_3',
+    url: '/step_3/:file_id/:extension'
+    templateUrl: 'add_file/step_3.html'
+    controller: 'AddFileStep3Controller'
+    params: 
+      file_id: null
+      extension: null
     
   .state 'root.view_file',
     url: 'view_file',
