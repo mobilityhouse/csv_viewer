@@ -1,7 +1,7 @@
 @csvv.controller 'AddFileStep1Controller', [ '$scope', '$q', 'CookiesService', ($scope, $q, CookiesService)->
 
   FILE_PROPERTIES = ['column_separator', 'row_separator', 'string_separator', 'header_line', 'encoding', 'extension']
-  EXTENSION_PROPERTIES = ['aws_access_key_id', 'aws_secret_access_key', 'aws_region']
+  EXTENSION_PROPERTIES = ['aws_access_key_id', 'aws_secret_access_key', 'aws_region', 'aws_bucket']
 
   file_settings_cookies = new CookiesService(FILE_PROPERTIES)
   extension_settings_cookies = new CookiesService(EXTENSION_PROPERTIES)

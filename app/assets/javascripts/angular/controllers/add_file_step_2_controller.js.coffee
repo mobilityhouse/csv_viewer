@@ -1,7 +1,7 @@
 @csvv.controller 'AddFileStep2Controller', ['$scope', '$state', 'CookiesService', ($scope, $state, CookiesService)->
 
   FILE_PROPERTIES = ['name', 'column_separator', 'row_separator', 'string_separator', 'header_line', 'encoding', 'extension']
-  EXTENSION_PROPERTIES = ['aws_access_key_id', 'aws_secret_access_key', 'aws_region']
+  EXTENSION_PROPERTIES = ['aws_access_key_id', 'aws_secret_access_key', 'aws_region', 'aws_bucket']
   EXTENSIONS_WITH_POST_UPLOAD_STEP = ['S3']
   
   SPINNER_OPTIONS = 

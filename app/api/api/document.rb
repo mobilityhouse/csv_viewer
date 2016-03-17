@@ -31,7 +31,8 @@ module Api
       get '/' do
         document = document_class.find(params[:id])
         document_extension = document.document_extension
-        
+        document_decorator_class = document_extension.class.try(:decorator_class)
+        document = document_decorator_class.decorate(document) if document_decorator_class.present?
         {
           name: document.name,  
           columns: document.columns,

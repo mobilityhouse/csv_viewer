@@ -1,7 +1,6 @@
 @csvv.controller 'S3ExtensionPostFormController', ['$scope', ($scope)->
 
   $scope.set_extension_attributes = ()->
-    #console.log {columns: $scope.$ctrl.extension_post_settings.selected_columns}
     $scope.$ctrl.setFormDataPromise({columns: $scope.$ctrl.extension_post_settings.selected_columns})
 
   set_form_layout = ()->
