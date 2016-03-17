@@ -12,20 +12,22 @@
             .form-group
               .input-group
                 span.input-group-addon Select visible columns
-                select#filter_columns.form-control ng-model="column_filter" multiple="true"
-                  option ng-repeat="column in file_loader.file.columns" value="{{column}}" {{ column }}
+                select#filter_columns.form-control ng-model="file_filter.filter.column_filter" multiple="true" ng-options="column for column in file_loader.file.columns"
               br
               .input-group
                 span.input-group-addon Search phrase
-                input#search_phrase.form-control type="text" placeholder="Search phrase" ng-model="search_phrase"
+                input#search_phrase.form-control type="text" placeholder="Search phrase" ng-model="file_filter.filter.phrase_filter"
+              br
+                button.btn.btn-default ng-click="save_filter()"Save filter
+              br
           .table-container
             table.table.table-bordered.table-striped
               thead
                 tr
-                  th ng-repeat="current_column in file_loader.file.columns | ColumnFilter:column_filter" {{ current_column }}
+                  th ng-repeat="current_column in file_loader.file.columns | ColumnFilter:file_filter.filter.column_filter" {{ current_column }}
               tbody
-                tr ng-repeat="current_row in file_loader.file.rows | PhraseFilter:search_phrase:column_filter:this | PaginationFilter:current_page | S3Filter:file_loader.file.extension_type:file_loader.file.extension_settings"
-                  td.text-nowrap ng-repeat="row_column in file_loader.file.columns | ColumnFilter:column_filter"
+                tr ng-repeat="current_row in file_loader.file.rows | PhraseFilter:file_filter.filter.phrase_filter:file_filter.filter.column_filter:this | PaginationFilter:current_page | S3Filter:file_loader.file.extension_type:file_loader.file.extension_settings"
+                  td.text-nowrap ng-repeat="row_column in file_loader.file.columns | ColumnFilter:file_filter.filter.column_filter"
                     .cell-content ng-bind-html='current_row[row_column]'
           uib-pagination boundary-links="true" max-size='5' rotate='true' force-ellipses='true' total-items="rows_count" ng-model="current_page" class="pagination-sm" previous-text="<" next-text=">" first-text="<<" last-text=">>"
 

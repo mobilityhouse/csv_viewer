@@ -11,4 +11,12 @@ module ApplicationHelper
     error_callback.call if current_user.blank? || !current_user.try(:admin)
   end
   
+  def self.document(class_name, document_id, error_handler)
+    begin
+      class_name.constantize.find(document_id)
+    rescue Exception => e
+      error_handler.call
+    end
+  end
+  
 end

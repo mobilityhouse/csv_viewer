@@ -1,14 +1,19 @@
-@csvv.controller 'ViewFileStep2Controller', [ '$scope', '$stateParams', 'FileLoaderService', ($scope, $stateParams, FileLoaderService)->
+@csvv.controller 'ViewFileStep2Controller', [ '$scope', '$stateParams', 'FileLoaderService', 'FileFilterService', ($scope, $stateParams, FileLoaderService, FileFilterService)->
   
   SPINNER_OPTIONS = 
     scale: 2
     
   spinner = new Spinner(SPINNER_OPTIONS)
+  $scope.file_filter = new FileFilterService('CsvDocument', $stateParams.file_id)
+  $scope.file_loader = new FileLoaderService('CsvDocument', $stateParams.file_id)
+  
+  $scope.save_filter = ()->
+    $scope.file_filter.set_filter()
   
   set_layout = ()->
     $( "#filter_columns" ).select2({ theme: "bootstrap", width: '100%', allowClear: true, placeholder: 'All columns visible'})
     spinner.stop()
-    $( '#state-content' ).toggle()
+    $( '#state-content' ).show()
     $.fn.progress_bar.go(99)
     
   show_error_message = (err)=>
@@ -18,8 +23,10 @@
   
   angular.element(document).ready ()->
     spinner.spin( document.getElementById('a-l2') )
-    $scope.file_loader = new FileLoaderService('CsvDocument')
-    $scope.file_loader.load_file($stateParams.file_id, set_layout, show_error_message)
-    $scope.search_phrase = null
-  
+    $scope.file_loader.get_file().then ()->
+      $scope.file_filter.get_filter().then ()->
+        _.defer ()->
+          set_layout()
+      ,(err)->
+        show_error_message(err)
 ]

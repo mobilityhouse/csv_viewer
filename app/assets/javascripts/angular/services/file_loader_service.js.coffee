@@ -2,29 +2,17 @@
   
   class FileLoader
 
-    constructor: (@type)->
+    constructor: (@type, @file_id)->
       @file = null
-      
-    load_file: (file_id, callback_success, callback_fail)->
-      if file_id?
-        @get_file(file_id).then (response)=>
-          @file = response.data
-          if callback_success?
-            callback_success()
-        , (err)=>
-          if callback_fail?
-            callback_fail(err)
-      else
-        if callback_fail?
-          callback_fail({status: 404, statusText: 'No file selected'})
           
-          
-    get_file: (id)->
+    get_file: ()->
       $http
         url: "/document/", 
         method: "GET", 
         data: [],
         params: 
           type: @type
-          id: id     
+          id: @file_id
+      .then (res)=>
+        @file = res.data
 ]
