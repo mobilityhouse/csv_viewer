@@ -11,7 +11,12 @@ module DocumentExtensions
     end
     
     def signed_link(filename)
-      "<a href='#{presigned_url(filename)}'>#{filename}</a>"
+      return "" if filename.blank?
+      begin
+        "<a href='#{presigned_url(filename)}'>#{filename}</a>"
+      rescue Exception => e
+        ""
+      end
     end
     
     def aws_access_key_id
@@ -48,10 +53,6 @@ module DocumentExtensions
     
     def aws_key(filename)
       Pathname.new(aws_path).join(filename).to_s
-    end
-    
-    def file_name(uri)
-      uri.path.split('/').last
     end
     
     def s3_presigner
