@@ -32,7 +32,7 @@ module DocumentExtensions
     
     def aws_path
       ap = extension_settings['aws_path']
-      return if ap.blank?
+      return '' if ap.blank?
       ap[0] == '/' ? ap[1..-1] : ap 
     end
     
