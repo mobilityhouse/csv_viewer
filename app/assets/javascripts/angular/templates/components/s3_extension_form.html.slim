@@ -8,10 +8,12 @@ br
 br
 .input-group.strech-horizontal
   span.input-group-addon.fixed-width AWS region
-  select#aws_region.form-control ng-model="$ctrl.esettings.aws_region"
-    option
-    option value="eu-west-1" eu-west-1
+  input#aws_region.input-lg.form-control.strech-horizontal type="text" placeholder="Enter AWS region" ng-model="$ctrl.esettings.aws_region"
 br
 .input-group.strech-horizontal
   span.input-group-addon.fixed-width AWS bucket
   input#aws_bucket.input-lg.form-control.strech-horizontal type="text" placeholder="Enter AWS bucket name" ng-model="$ctrl.esettings.aws_bucket"
+br
+.input-group.strech-horizontal
+  span.input-group-addon.fixed-width AWS folder
+  input#aws_folder.input-lg.form-control.strech-horizontal type="text" placeholder="Enter AWS folder path ( ex. /documents )" ng-model="$ctrl.esettings.aws_path"
