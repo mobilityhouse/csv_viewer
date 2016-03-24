@@ -56,15 +56,15 @@ module DocumentExtensions
     end
     
     def s3_presigner
-      Aws::S3::Presigner.new({client: s3_client})
+      @s3_presigner ||= Aws::S3::Presigner.new({client: s3_client})
     end
     
     def s3_client
-      Aws::S3::Client.new(region: aws_region, credentials: credentials)
+      @s3_client ||= Aws::S3::Client.new(region: aws_region, credentials: credentials)
     end
     
     def credentials
-      Aws::Credentials.new(aws_access_key_id, aws_secret_access_key)
+      @credentials ||= Aws::Credentials.new(aws_access_key_id, aws_secret_access_key)
     end
     
   end
