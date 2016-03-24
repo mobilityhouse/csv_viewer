@@ -13,7 +13,7 @@ module DocumentExtensions
     def signed_link(filename)
       return "" if filename.blank?
       begin
-        "<a href='#{presigned_url(filename)}'>#{filename}</a>"
+        "<a href='#{presigned_url(filename)}' target='_blank'>#{filename}</a>"
       rescue Exception => e
         ""
       end
