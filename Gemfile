@@ -34,6 +34,8 @@ gem 'draper', github: 'audionerd/draper', branch: 'rails5'
 group :development, :test do
   gem 'pry'
   gem 'better_errors'
+  gem 'capistrano'
+  gem 'capistrano-rails', require: false
 end
 
 group :development do
