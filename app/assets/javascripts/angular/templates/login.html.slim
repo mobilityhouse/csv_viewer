@@ -1,16 +1,16 @@
 .vertical-center
-  .container-fluid.well
+  .container-fluid.well.col-sm-5
     .row.text-center
       h2 Log in
     br
     .row
       .col-sm-12
         .form-group
-          .input-group
+          .input-group.strech-horizontal
             span.input-group-addon.fixed-width E-mail
-            input#email.input-lg.form-control.strech-horizontal type="text" placeholder="Enter e-mail address" ng-model="user.email"
+            input#email.input-lg.form-control type="text" placeholder="Enter e-mail address" ng-model="user.email"
           br
-          .input-group
+          .input-group.strech-horizontal
             span.input-group-addon.fixed-width Password
             input#password.input-lg.form-control.strech-horizontal type="password" placeholder="Enter password" ng-model="user.password"
           br

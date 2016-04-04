@@ -10,6 +10,7 @@
         return @current_file[0].id
     
     refresh: (callback_success, callback_fail)->
+      @current_file = []
       @get_file_list().then (response)=>
         @files = response.data
         if callback_success?
