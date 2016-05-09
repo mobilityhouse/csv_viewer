@@ -2,6 +2,8 @@ module DocumentExtensions
 
   class S3 < DocumentExtension
     
+    DOC_COLUMN = 'S3_Documents'
+    
     def self.type
       'S3'
     end
@@ -10,10 +12,30 @@ module DocumentExtensions
       DocumentDecorators::S3
     end
     
+    def links_collection(row, index)
+      select_tag(index) do |s|
+        columns.map do |c|
+          signed_link(row[c])
+        end.join
+      end
+    end
+    
+    def select_tag(id, &block)
+      select_id = "s3_doc_select_#{id}"
+      "<form class=\"form-inline\">
+       <select id=#{select_id} selected=''><option value=''></option>#{ yield('') }</select>
+       <button class=\"btn btn-default\" onClick=\"#{click_func(select_id)}\">Open</button>
+      </form>"
+    end
+    
+    def click_func(select_id)
+      "window.open($( '##{select_id}\' ).val(), '_blank')"
+    end
+    
     def signed_link(filename)
       return "" if filename.blank?
       begin
-        "<a href='#{presigned_url(filename)}' target='_blank'>#{filename}</a>"
+        "<option value='#{presigned_url(filename)}'>#{filename.gsub('/', '&sol;')}</option>"
       rescue Exception => e
         ""
       end
@@ -43,6 +65,12 @@ module DocumentExtensions
     
     def columns
       extension_settings['columns'] || []
+    end
+    
+    def current_extension_settings
+      extension_settings.tap do |es|
+        es[:columns] = [DOC_COLUMN]
+      end
     end
     
     private
