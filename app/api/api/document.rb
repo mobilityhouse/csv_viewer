@@ -38,7 +38,7 @@ module Api
           columns: document.columns,
           rows: document.rows,
           extension_type: document_extension.class.try(:type),
-          extension_settings: document_extension.try(:extension_settings)
+          extension_settings: document_extension.try(:current_extension_settings)
         }
       end
       

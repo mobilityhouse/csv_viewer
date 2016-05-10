@@ -12,6 +12,9 @@
   
   set_layout = ()->
     $( "#filter_columns" ).select2({ theme: "bootstrap", width: '100%', allowClear: true, placeholder: 'All columns visible'})
+    if $scope.file_loader.file?.extension_type == 'S3'
+      _.forEach $scope.file_loader.file.rows, (r, i)->
+        $( "#s3_doc_select_#{i}" ).select2({ theme: "bootstrap", width: '50%', allowClear: true, placeholder: 'Select document to view'})
     spinner.stop()
     $( '#state-content' ).show()
     $.fn.progress_bar.go(99)
