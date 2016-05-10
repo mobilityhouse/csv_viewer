@@ -1,4 +1,4 @@
-#lock '3.4.0'
+lock '3.4.0'
 
 set :application, 'csv_viewer'
 set :repo_url, 'git@github.com:mobilityhouse/csv_viewer.git'
