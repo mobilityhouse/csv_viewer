@@ -3,6 +3,10 @@ class Document < ApplicationRecord
   has_one :document_filter, dependent: :destroy
   validates :name, :file, :type, presence: true
   
+  def check_if_valid!
+    raise 'Has to be implemented!'
+  end
+  
   def extension_type
     additional_params['extension']
   end
