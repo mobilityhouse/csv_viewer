@@ -6,6 +6,12 @@ class CsvDocument < Document
   ENCODINGS = ['UTF-8', 'ISO8859-1']
   ATTRIBUTES_FOR_API = ['columns']
   
+  def check_if_valid!
+    columns
+    rows
+    true
+  end
+  
   def get_attribute(attribute_name)
     return if !ATTRIBUTES_FOR_API.include?(attribute_name)
     send attribute_name

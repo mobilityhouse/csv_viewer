@@ -58,14 +58,22 @@ module Api
       end
       post '/' do
         ApplicationHelper.authenticate_as_admin!(env, params, return_401)
-        doc = document_class.new(
-          name: params[:name], 
-          file: params[:file][:tempfile].read,
-          additional_params: params[:additional_params]
-        )
-        doc.save!
-        if doc.has_extension?
-          doc.extension_class.new({document: doc, extension_settings: params[:extension_params]}).save!
+        begin
+          doc = document_class.new(
+            name: params[:name], 
+            file: params[:file][:tempfile].read,
+            additional_params: params[:additional_params]
+          )
+          doc.save!
+          if doc.has_extension?
+            ext = doc.extension_class.new({document: doc, extension_settings: params[:extension_params]})
+            ext.save!
+          end
+          doc.check_if_valid!
+        rescue Exception => e
+          doc.destroy if defined?(doc) && doc.present?
+          ext.destroy if defined?(ext) && ext.present?
+          error!('400 Bad request', 400)
         end
         { created_file_name: doc.name, created_file_id: doc.id }
       end
