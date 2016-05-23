@@ -62,11 +62,11 @@ module Api
           doc = document_class.new(
             name: params[:name], 
             file: params[:file][:tempfile].read,
-            additional_params: params[:additional_params]
+            additional_params: JSON.parse(params[:additional_params])
           )
           doc.save!
           if doc.has_extension?
-            ext = doc.extension_class.new({document: doc, extension_settings: params[:extension_params]})
+            ext = doc.extension_class.new({document: doc, extension_settings: JSON.parse(params[:extension_params]) })
             ext.save!
           end
           doc.check_if_valid!

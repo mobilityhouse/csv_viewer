@@ -1,4 +1,4 @@
-asset 'angular', '1.5.0'
+asset 'angular', '1.5.5'
 asset 'lodash', '2.4.2'
 asset 'angular-lodash', '0.1.2'
 asset 'angular-ui-router', '0.2.18'
