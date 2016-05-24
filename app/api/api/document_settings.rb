@@ -41,7 +41,7 @@ module Api
       post '/' do
         ApplicationHelper.authenticate_as_admin!(env, params, return_401)
         doc = document_class.find(params[:file_id])
-        doc.update_params_and_extension(params[:new_settings], params[:new_extension_settings])
+        doc.update_params_and_extension(JSON.parse(params[:new_settings]), JSON.parse(params[:new_extension_settings]))
       end
       
     
