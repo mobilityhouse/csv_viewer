@@ -36,8 +36,8 @@ body {
 
 .vertical-center {
   min-height: 100%;
-  min-height: 100vh;
-  margin-top: 5vh;
+  //min-height: 100vh;
+  margin-top: 15vh;
   display: flex;
   align-items: center;
 }
@@ -130,11 +130,34 @@ body {
 .back-btn::after {
     content: " Back";
     padding-right: 5px;
+    font-weight: bold;
+    font-family: Arial;
 }
 
 .next-btn::after {
     content: "Next";
     padding-left: 5px;
+    font-weight: bold;
+    font-family: Arial;
+}
+
+.logout-btn::after {
+    content: "Logout";
+    padding-left: 5px;
+    font-weight: bold;
+    font-family: Arial;
+}
+
+.add-btn::after {
+    content: "Add File";
+    padding-left: 5px;
+    font-family: Arial;
+}
+
+.view-btn::after {
+    content: "View File";
+    padding-left: 5px;
+    font-family: Arial;
 }
 
 .file-table-margins {
@@ -148,10 +171,12 @@ body {
 
 h3 {
   font-size: 18px;
+  font-weight: bold;
 }
 
 h2 {
   font-size: 20px;
+  font-weight: bold;
 }
 
 .input-lg, .select2-selection__rendered {
