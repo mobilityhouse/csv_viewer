@@ -62,7 +62,7 @@ body {
 }
 
 .fixed-height{
-  height: 50vh;
+  height: 20vh;
 }
 
 .transparent-cloak{
@@ -130,6 +130,13 @@ body {
 .back-btn::after {
     content: " Back";
     padding-right: 5px;
+    font-weight: bold;
+    font-family: Arial;
+}
+
+.home-btn::after {
+    content: "Home";
+    padding-left: 5px;
     font-weight: bold;
     font-family: Arial;
 }

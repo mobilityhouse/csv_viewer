@@ -1,5 +1,5 @@
 .navigation
-  h3 File: {{file_loader.file.name}}
+    h3 File: {{file_loader.file.name}}
 
 #state-content.col-sm-12.vertical-center style='display: none;'
   .strech-horizontal
@@ -9,15 +9,17 @@
           form.form_horizontal
             .form-group
               .input-group
-                span.input-group-addon Select visible columns
+                span.input-group-addon.fixed-width Select visible columns
                 select#filter_columns.form-control ng-model="file_filter.filter.column_filter" multiple="true" ng-options="column for column in file_loader.file.columns"
               br
               .input-group
-                span.input-group-addon Search phrase
-                input#search_phrase.form-control type="text" placeholder="Search phrase" ng-model="file_filter.filter.phrase_filter"
-              br
-                button.btn.btn-default ng-click="save_filter()"Save filter
-              br
+                span.input-group-addon.fixed-width Search phrase
+                input#search_phrase.form-control.fixed-width type="text" placeholder="Search phrase" ng-model="file_filter.filter.phrase_filter"
+      .col-sm-12
+        .file-table-margins
+          button.btn.btn-default ng-click="save_filter()" Save filter
+      .col-sm-12.space-top
+        .file-table-margins
           .table-container
             table.table.table-bordered.table-striped
               thead
@@ -27,5 +29,7 @@
                 tr ng-repeat="current_row in file_loader.file.rows | PhraseFilter:file_filter.filter.phrase_filter:file_filter.filter.column_filter:this | PaginationFilter:current_page | S3Filter:file_loader.file.extension_type:file_loader.file.extension_settings"
                   td.text-nowrap ng-repeat="row_column in file_loader.file.columns | ColumnFilter:file_filter.filter.column_filter"
                     .cell-content ng-bind-html='current_row[row_column]'
+      .col-sm-12.text-center
+        .file-table-margins
           uib-pagination boundary-links="true" max-size='5' rotate='true' force-ellipses='true' total-items="rows_count" ng-model="current_page" class="pagination-sm" previous-text="<" next-text=">" first-text="<<" last-text=">>"
 

@@ -25,7 +25,7 @@
       spinner.stop()
       bootbox.alert "Extension settings updated successfully."
       $('#file-post-extension-form').show()
-      res
+      $state.go 'root.view_file.step_1'
     , (err)->
       spinner.stop()
       bootbox.alert "Error during extension settings update - #{err.status} #{err.statusText}"
