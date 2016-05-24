@@ -37,7 +37,7 @@ body {
 .vertical-center {
   min-height: 100%;
   min-height: 100vh;
-  //margin-top: 14vh;
+  margin-top: 5vh;
   display: flex;
   align-items: center;
 }
@@ -58,7 +58,7 @@ body {
 }
 
 .fixed-width{
-  width: 13vw;
+  width: 14vw;
 }
 
 .fixed-height{
@@ -129,10 +129,12 @@ body {
 
 .back-btn::after {
     content: " Back";
+    padding-right: 5px;
 }
 
-.next-btn::before {
+.next-btn::after {
     content: "Next";
+    padding-left: 5px;
 }
 
 .file-table-margins {
@@ -150,4 +152,16 @@ h3 {
 
 h2 {
   font-size: 20px;
+}
+
+.input-lg, .select2-selection__rendered {
+  font-size: 14px;
+}
+
+.space-right  {
+  margin-right: 10px;
+}
+
+.space-top  {
+  margin-top: 10px;
 }

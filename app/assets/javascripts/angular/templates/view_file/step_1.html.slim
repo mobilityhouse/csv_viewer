@@ -1,18 +1,13 @@
-.navigation
-  button.btn.btn-default ui-sref="root.main_view"
-    i#arrow-left.fa.fa-arrow-circle-left.link-cursor.back-btn
-  h2 Select file
-
 .col-sm-1
 .col-sm-10.vertical-center 
   #state-content.strech-horizontal style='display: none;'
-    .row 
+    .row
       .col-sm-8
           form.form_horizontal
             .form-group
               .input-group
-                span.input-group-addon Search file
-                input#file_name.input-lg.form-control.strech-horizontal type="text" placeholder="Enter file name" ng-model="search_file_name"
+                span.input-group-addon Search or select file
+                input#file_name.input-lg.form-control.strech-horizontal type="text" placeholder="enter file name" ng-model="search_file_name"
     .row
       .col-sm-8
         .limit-height
