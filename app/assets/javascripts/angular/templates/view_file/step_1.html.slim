@@ -2,30 +2,32 @@
   button.btn.btn-default ui-sref="root.main_view"
     i#arrow-left.fa.fa-arrow-circle-left.link-cursor.back-btn
   h2 Select file
-  button.btn.btn-default ng-click="go_to_file()"
-    i#arrow-right.next-btn.fa.fa-arrow-circle-right.link-cursor
 
 .col-sm-1
 .col-sm-10.vertical-center 
   #state-content.strech-horizontal style='display: none;'
     .row 
-      form.form_horizontal
-        .form-group
-          .input-group
-            span.input-group-addon Search file
-            input#file_name.input-lg.form-control.strech-horizontal type="text" placeholder="Enter file name" ng-model="search_file_name"
+      .col-sm-8
+          form.form_horizontal
+            .form-group
+              .input-group
+                span.input-group-addon Search file
+                input#file_name.input-lg.form-control.strech-horizontal type="text" placeholder="Enter file name" ng-model="search_file_name"
     .row
-      .col-sm-12
+      .col-sm-8
         .limit-height
           ul.list-group.link-cursor
             li.list-group-item(selection-model selection-model-selected-items="file_list.current_file" selection-model-selected-class="'active'" ng-repeat="current_file in file_list.files | FileListFilter:search_file_name")
               .row.strech-horizontal.vertical-center-no-height
                 .col-sm-10
                   span
-                    strong = '{{current_file.id}} {{current_file.name}}'
+                    strong = '{{current_file.name}}'
                 .col-sm-1 ng-show="is_admin"
                   button.btn.btn-default.without-border ng-click="edit_file(current_file.id)"
                     i.fa.fa-2x.fa-pencil-square-o
                 .col-sm-1 ng-show="is_admin"
                   button.btn.btn-default.without-border ng-click="delete_file(current_file.id)"
                     i.fa.fa-2x.fa-times-circle
+                .col-sm-1
+                  button.btn.btn-default.without-border ng-click="go_to_file(current_file.id)"
+                    i.fa.fa-2x.fa-eye
