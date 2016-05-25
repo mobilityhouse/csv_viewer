@@ -15,6 +15,10 @@
               .input-group
                 span.input-group-addon.fixed-width Search phrase
                 input#search_phrase.form-control.fixed-width type="text" placeholder="Search phrase" ng-model="file_filter.filter.phrase_filter"
+              br
+              .input-group
+                span.input-group-addon.fixed-width Documents per page
+                select#per_page.form-control ng-model="per_page" ng-options="pp for pp in per_page_presets"
       .col-sm-12
         .file-table-margins
           button.btn.btn-default ng-click="save_filter()" Save filter
@@ -26,10 +30,10 @@
                 tr
                   th ng-repeat="current_column in file_loader.file.columns | ColumnFilter:file_filter.filter.column_filter" {{ current_column }}
               tbody.text-left
-                tr ng-repeat="current_row in file_loader.file.rows | PhraseFilter:file_filter.filter.phrase_filter:file_filter.filter.column_filter:this | PaginationFilter:current_page | S3Filter:file_loader.file.extension_type:file_loader.file.extension_settings"
+                tr ng-repeat="current_row in file_loader.file.rows | PhraseFilter:file_filter.filter.phrase_filter:file_filter.filter.column_filter:this | PaginationFilter:current_page:per_page | S3Filter:file_loader.file.extension_type:file_loader.file.extension_settings"
                   td.text-nowrap ng-repeat="row_column in file_loader.file.columns | ColumnFilter:file_filter.filter.column_filter"
                     .cell-content ng-bind-html='current_row[row_column]'
       .col-sm-12.text-center
         .file-table-margins
-          uib-pagination boundary-links="true" max-size='5' rotate='true' force-ellipses='true' total-items="rows_count" ng-model="current_page" class="pagination-sm" previous-text="<" next-text=">" first-text="<<" last-text=">>"
+          uib-pagination boundary-links="true" max-size='5' rotate='true' force-ellipses='true' items-per-page="per_page" total-items="rows_count" ng-model="current_page" class="pagination-sm" previous-text="<" next-text=">" first-text="<<" last-text=">>"
 
