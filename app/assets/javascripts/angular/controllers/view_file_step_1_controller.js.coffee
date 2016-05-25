@@ -5,12 +5,8 @@
     
   spinner = new Spinner(SPINNER_OPTIONS)
   
-  $scope.go_to_file = ()->
-    if $scope.file_list.current_file_id()?
-      $state.go 'root.view_file.step_2', {file_id: $scope.file_list.current_file_id()} 
-    else
-      bootbox.alert "Please select file to view"
-      return true
+  $scope.go_to_file = (file_id)->
+    $state.go 'root.view_file.step_2', {file_id: file_id} 
 
   $scope.delete_file = (file_id)->
     bootbox.confirm "Selected file will be deleted. Are you sure?", (result)->

@@ -1,14 +1,9 @@
-.navigation
-  button.btn.btn-default ui-sref="root.view_file.step_1"
-    i#arrow-left.fa.fa-arrow-circle-left.link-cursor.back-btn
-  h3 File settings
 .col-sm-1
-#state-content.col-sm-10.vertical-center
+#state-content.col-sm-10
   .strech-horizontal
     .row.top-menu-margin
       .col-sm-12
         file-settings-form settings='file_settings.current_file_settings' get-form-data-promise='get_file_settings_promise'
         file-extension-form ename='file_settings.current_file_settings.extension' esettings='extension_settings.current_extension_settings' get-form-data-promise='get_extension_settings_promise'
     #save-btn-container.row style='display: none;'
-      .col-sm-12.text-center
-        button.btn.btn-default.btn-lg type='button' ng-click="save()" Save
+    button.btn.btn-success.space-top.btn-lg type='button' ng-click="save()" Save

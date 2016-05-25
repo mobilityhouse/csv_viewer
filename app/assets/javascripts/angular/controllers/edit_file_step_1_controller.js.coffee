@@ -18,6 +18,7 @@
   $scope.save = ()->
     spinner.spin( document.getElementById('a-lv2') )
     $scope.file_settings.set(show_update_success_message, show_update_fail_message, $scope.extension_settings.current_extension_settings)
+    $state.go 'root.view_file.step_1'
     
   spinner_stop = ()->
     $('#save-btn-container').show()
