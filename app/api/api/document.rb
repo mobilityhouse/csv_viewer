@@ -85,6 +85,7 @@ module Api
       delete '/' do
         ApplicationHelper.authenticate_as_admin!(env, params, return_401)
         document_class.find(params[:file_id]).destroy
+        { deleted: params[:file_id] }
       end
       
       params do
