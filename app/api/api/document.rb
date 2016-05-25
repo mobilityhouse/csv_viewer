@@ -31,11 +31,12 @@ module Api
       get '/' do
         document = document_class.find(params[:id])
         document_extension = document.document_extension
+        document_columns = document_extension.try(:change_columns?) ? document_extension.document_columns(document) : document.columns 
         document_decorator_class = document_extension.class.try(:decorator_class)
         document = document_decorator_class.decorate(document) if document_decorator_class.present?
         {
           name: document.name,  
-          columns: document.columns,
+          columns: document_columns,
           rows: document.rows,
           extension_type: document_extension.class.try(:type),
           extension_settings: document_extension.try(:current_extension_settings)

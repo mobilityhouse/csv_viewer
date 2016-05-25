@@ -12,6 +12,14 @@ module DocumentExtensions
       DocumentDecorators::S3
     end
     
+    def change_columns?
+      true
+    end
+    
+    def document_columns(doc)
+      doc.columns - columns + [DOC_COLUMN]
+    end
+    
     def links_collection(row, index)
       select_tag(index) do |s|
         columns.map do |c|

@@ -13,4 +13,8 @@ class DocumentExtension < ApplicationRecord
     update(extension_settings: ((extension_settings || {}).merge(new_attributes)))
   end
   
+  def change_columns?
+    raise 'Has to be implemented!'
+  end
+  
 end

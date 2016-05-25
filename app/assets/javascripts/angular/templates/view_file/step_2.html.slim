@@ -14,11 +14,7 @@
               br
               .input-group
                 span.input-group-addon.fixed-width Search phrase
-                input#search_phrase.form-control.fixed-width type="text" placeholder="Search phrase" ng-model="file_filter.filter.phrase_filter"
-              br
-              .input-group
-                span.input-group-addon.fixed-width Documents per page
-                select#per_page.form-control ng-model="per_page" ng-options="pp for pp in per_page_presets"
+                input#search_phrase.form-control type="text" placeholder="Search phrase" ng-model="file_filter.filter.phrase_filter"
       .col-sm-12
         .file-table-margins
           button.btn.btn-default ng-click="save_filter()" Save filter
@@ -35,5 +31,12 @@
                     .cell-content ng-bind-html='current_row[row_column]'
       .col-sm-12.text-center
         .file-table-margins
-          uib-pagination boundary-links="true" max-size='5' rotate='true' force-ellipses='true' items-per-page="per_page" total-items="rows_count" ng-model="current_page" class="pagination-sm" previous-text="<" next-text=">" first-text="<<" last-text=">>"
+            .row
+              .col-sm-3
+              .col-sm-3
+                .input-group.margin-top-20
+                  span.input-group-addon.fixed-width Documents per page
+                  select#per_page.form-control ng-model="per_page" ng-options="pp for pp in per_page_presets"
+              .col-sm-4
+                uib-pagination boundary-links="true" max-size='5' rotate='true' force-ellipses='true' items-per-page="per_page" total-items="rows_count" ng-model="current_page" class="pagination-sm" previous-text="<" next-text=">" first-text="<<" last-text=">>"
 
