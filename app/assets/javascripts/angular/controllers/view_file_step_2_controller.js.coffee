@@ -15,7 +15,6 @@
   
   set_layout = ()->
     $( "#filter_columns" ).select2({ theme: "bootstrap", width: '100%', allowClear: true, placeholder: 'All columns visible'})
-    $( "#per_page" ).select2({ theme: "bootstrap", width: '100%', allowClear: false })
     if $scope.file_loader.file?.extension_type == 'S3'
       _.forEach $scope.file_loader.file.rows, (r, i)->
         $( "#s3_doc_select_#{i}" ).select2({ theme: "bootstrap", width: '50%', allowClear: true, placeholder: 'Select document to view'})
@@ -27,6 +26,13 @@
     spinner.stop()
     $.fn.progress_bar.go(99)
     bootbox.alert "Get file failed - #{err.status} #{err.statusText}. Check file settings or upload it again"
+    
+  $scope.set_per_page = (new_per_page)->
+    $scope.per_page = new_per_page
+    
+  $scope.per_page_class = (per_page_set)->
+    return 'active' if per_page_set == $scope.per_page
+    return ''
   
   angular.element(document).ready ()->
     $scope.per_page = PER_PAGE
