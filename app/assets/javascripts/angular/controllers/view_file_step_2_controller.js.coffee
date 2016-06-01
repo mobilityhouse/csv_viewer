@@ -14,7 +14,11 @@
     $scope.file_filter.set_filter()
   
   set_layout = ()->
-    $( "#filter_columns" ).select2({ theme: "bootstrap", width: '100%', allowClear: true, placeholder: 'All columns visible'})
+    column_filter = $( "#filter_columns" ).select2({ theme: "bootstrap", width: '100%', allowClear: true, placeholder: 'All columns visible'})
+    column_filter.on 'change', (e)-> 
+      $scope.set_document_selects()
+    $('#search_phrase').on 'keypress', (e)->
+      $scope.set_document_selects()
     $scope.set_document_selects()
     spinner.stop()
     $( '#state-content' ).show()
