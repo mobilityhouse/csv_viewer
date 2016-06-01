@@ -14,6 +14,9 @@
     $scope.file_filter.set_filter()
   
   set_layout = ()->
+    $(document).keydown (e)->
+      if (e.target.id != 'search_phrase') && (e.keyCode == 8)
+        e.preventDefault()
     column_filter = $( "#filter_columns" ).select2({ theme: "bootstrap", width: '100%', allowClear: true, placeholder: 'All columns visible'})
     column_filter.on 'change', (e)-> 
       $scope.set_document_selects()
