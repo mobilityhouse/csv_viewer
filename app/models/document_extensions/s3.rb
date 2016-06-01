@@ -30,8 +30,8 @@ module DocumentExtensions
     
     def select_tag(id, &block)
       select_id = "s3_doc_select_#{id}"
-      "<form class=\"form-inline\">
-       <select id=#{select_id} selected=''><option value=''></option>#{ yield('') }</select>
+      "<form class=\"form-inline document-select-col\"'>
+       <select class='document_selector' id=#{select_id} selected=''><option value=''></option>#{ yield('') }</select>
        <button class=\"btn btn-default\" onClick=\"#{click_func(select_id)}\">Open</button>
       </form>"
     end

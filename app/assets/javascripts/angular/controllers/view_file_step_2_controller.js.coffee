@@ -15,12 +15,20 @@
   
   set_layout = ()->
     $( "#filter_columns" ).select2({ theme: "bootstrap", width: '100%', allowClear: true, placeholder: 'All columns visible'})
-    if $scope.file_loader.file?.extension_type == 'S3'
-      _.forEach $scope.file_loader.file.rows, (r, i)->
-        $( "#s3_doc_select_#{i}" ).select2({ theme: "bootstrap", width: '50%', allowClear: true, placeholder: 'Select document to view'})
+    $scope.set_document_selects()
     spinner.stop()
     $( '#state-content' ).show()
     $.fn.progress_bar.go(99)
+    
+  $scope.set_document_selects = ()->
+    $('#state-content').hide();
+    spinner.spin( document.getElementById('a-l2') )
+    if $scope.file_loader.file?.extension_type == 'S3'
+      _.defer ()->
+        $( ".document_selector" ).select2({ theme: "bootstrap", width: '85%', allowClear: true, placeholder: 'Select document to view'})
+        $('#state-content').show();
+        spinner.stop()
+    true
     
   show_error_message = (err)=>
     spinner.stop()
@@ -29,6 +37,7 @@
     
   $scope.set_per_page = (new_per_page)->
     $scope.per_page = new_per_page
+    $scope.set_document_selects()
     
   $scope.per_page_class = (per_page_set)->
     return 'active' if per_page_set == $scope.per_page
