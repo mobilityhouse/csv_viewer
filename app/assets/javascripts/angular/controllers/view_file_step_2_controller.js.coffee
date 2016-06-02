@@ -28,12 +28,12 @@
     $.fn.progress_bar.go(99)
     
   $scope.set_document_selects = ()->
-    $('#state-content').hide();
+    $('#file-content-table').hide();
     spinner.spin( document.getElementById('a-l2') )
     if $scope.file_loader.file?.extension_type == 'S3'
       _.defer ()->
         $( ".document_selector" ).select2({ theme: "bootstrap", width: '85%', allowClear: true, placeholder: 'Select document to view'})
-        $('#state-content').show();
+        $('#file-content-table').show();
         spinner.stop()
     true
     
