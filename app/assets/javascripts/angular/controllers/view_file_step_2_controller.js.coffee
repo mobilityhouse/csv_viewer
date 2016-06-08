@@ -34,7 +34,7 @@
     spinner.spin( document.getElementById('a-l2') )
     if $scope.file_loader.file?.extension_type == 'S3'
       _.defer ()->
-        $( ".document_selector" ).select2({ theme: "bootstrap", width: '85%', allowClear: true, placeholder: 'Select document to view'})
+        $( ".document_selector" ).select2({ theme: "bootstrap", allowClear: true, placeholder: 'Select document to view'})
         $('#file-content-table').show();
         spinner.stop()
     true
