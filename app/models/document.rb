@@ -33,7 +33,7 @@ class Document < ApplicationRecord
     if has_extension?
       extension = extension_class.find_or_initialize_by(document_id: id)
       extension.extension_settings = extension_params
-      extension.save!
+      extension.rebuild_and_save!
     else
       DocumentExtension.delete_all(document_id: id)
     end

@@ -15,8 +15,10 @@
   
   set_layout = ()->
     $(document).keydown (e)->
-      if (e.target.id != 'search_phrase') && (e.keyCode == 8)
+      if (e.target.tagName != 'INPUT') && (e.keyCode == 8)
         e.preventDefault()
+      else
+        true
     column_filter = $( "#filter_columns" ).select2({ theme: "bootstrap", width: '100%', allowClear: true, placeholder: 'All columns visible'})
     column_filter.on 'change', (e)-> 
       $scope.set_document_selects()

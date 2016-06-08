@@ -17,4 +17,8 @@ class DocumentExtension < ApplicationRecord
     raise 'Has to be implemented!'
   end
   
+  def rebuild_and_save!
+    raise 'Has to be implemented!'
+  end
+  
 end

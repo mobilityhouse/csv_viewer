@@ -12,6 +12,15 @@ module DocumentExtensions
       DocumentDecorators::S3
     end
     
+    def rebuild_and_save!
+      if col_keyword.present?
+        extension_settings[:columns] = document.columns.select do |col|
+          /#{col_keyword.upcase} [\d]+/ =~ col.upcase
+        end
+      end
+      save!
+    end
+    
     def change_columns?
       true
     end
@@ -79,6 +88,10 @@ module DocumentExtensions
       extension_settings.tap do |es|
         es[:columns] = [DOC_COLUMN]
       end
+    end
+    
+    def col_keyword
+      extension_settings['col_keyword']
     end
     
     private
