@@ -29,6 +29,7 @@ gem 'angular_csrf'
 gem 'aws-sdk', '~> 2'
 gem 'activemodel-serializers-xml', github: 'rails/activemodel-serializers-xml'
 gem 'draper', github: 'audionerd/draper', branch: 'rails5'
+gem 'rollbar'
 
 group :development, :test do
   gem 'pry'
